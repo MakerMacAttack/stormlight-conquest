@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cpsb66vvifmkf"]
+
+[ext_resource type="Texture2D" uid="uid://dua77l8al8ut7" path="res://Assets/WayOfKingsCover.jpg" id="1_hsj2j"]
+
+[node name="Landing" type="Control" unique_id=1514242051]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="TextureRect" parent="." unique_id=1047164613]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hsj2j")
+expand_mode = 2
