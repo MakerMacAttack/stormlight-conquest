@@ -2,6 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://dua77l8al8ut7" path="res://Assets/WayOfKingsCover.jpg" id="1_hsj2j"]
 
+[sub_resource type="SystemFont" id="SystemFont_hsj2j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yv141"]
+font = SubResource("SystemFont_hsj2j")
+font_size = 49
+
 [node name="Landing" type="Control" unique_id=1514242051]
 layout_mode = 3
 anchors_preset = 15
@@ -19,3 +25,20 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_hsj2j")
 expand_mode = 2
+
+[node name="MC" type="MarginContainer" parent="." unique_id=667047710]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 50
+
+[node name="Title" type="Label" parent="MC" unique_id=363771807]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Stormlight Conquest!"
+label_settings = SubResource("LabelSettings_yv141")
+horizontal_alignment = 1
+vertical_alignment = 1

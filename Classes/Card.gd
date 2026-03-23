@@ -2,5 +2,5 @@ extends Resource
 
 class_name card
 
-const country: String = ""
+const region: String = ""
 const denomination: String = ""
