@@ -1,6 +1,9 @@
 extends Resource
 
-class_name card
+class_name Card
 
-const region: String = ""
+var region: Region
 const denomination: String = ""
+
+func _init(region: Region, denomination: String) -> void:
+	pass

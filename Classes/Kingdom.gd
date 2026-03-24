@@ -1,3 +1,2 @@
 extends Resource
-
-class_name kingdom
+class_name Kingdom

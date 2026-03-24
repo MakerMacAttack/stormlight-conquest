@@ -1,3 +1,3 @@
 extends Resource
 
-class_name deck
+class_name Deck
