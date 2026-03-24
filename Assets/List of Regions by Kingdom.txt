@@ -1,0 +1,86 @@
+#Alethkar (10)
+Sadeas
+Aladar
+Roion
+Vamah
+Ruthar
+Kholin
+Hatham
+Thanadal
+Bethab
+Sebarial
+
+#Natanatan (5)
+Shattered Plains
+Unclaimed Hills
+Dawn's Shadow
+New Natanatan
+Shallow Crypts
+
+#Thaylenah (3)
+Thaylenah
+Kharbranth
+Frostlands
+
+#Herdaz (4)
+Herdaz
+Akak
+Arak
+Sumi
+
+#Jah Keved (7)
+Northgrip
+Elenar
+Valath
+Bavland
+Silnasen
+Bedenar
+Borderlands
+
+#Sela Tales (4)
+Tu Bayla
+Marabethia
+Yulay
+Babatharnam
+
+#Azish Empire (13)
+Azimir
+Desh
+Yezier
+Alm
+Liafor
+Steen
+Tashikk
+Emul
+Tukar
+Marat
+Greater Hexi
+Tu Fallia
+Triax
+
+#Shinovar (10)
+Bondsmith
+Windrunner
+Skybreaker
+Dustbringer
+Edgedancer
+Truthwatcher
+Lightweaver
+Elsecaller
+Willshaper
+Stoneward
+
+#Aimia (3)
+Aimia
+Akinah
+Third Isle
+
+#Iri (8)
+Eila
+Rira
+Kurth
+Kasitor
+Rall Elorim
+Quili
+Abri
+Kadrix
