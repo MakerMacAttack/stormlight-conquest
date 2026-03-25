@@ -19,6 +19,11 @@ run/main_scene="uid://cpsb66vvifmkf"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*uid://ynprl1fm5nvf"
+SignalHub="*uid://bs6sh57vp4fdi"
+
 [display]
 
 window/stretch/mode="canvas_items"

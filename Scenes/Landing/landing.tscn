@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cpsb66vvifmkf"]
 
 [ext_resource type="Texture2D" uid="uid://dua77l8al8ut7" path="res://Assets/WayOfKingsCover.jpg" id="1_hsj2j"]
+[ext_resource type="Script" uid="uid://bipfagtlvkyv3" path="res://Scenes/Landing/landing.gd" id="1_yv141"]
 
 [sub_resource type="SystemFont" id="SystemFont_hsj2j"]
 
@@ -15,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_yv141")
 
 [node name="BG" type="TextureRect" parent="." unique_id=1047164613]
 layout_mode = 1
@@ -33,7 +35,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
 [node name="Title" type="Label" parent="MC" unique_id=363771807]
 layout_mode = 2
@@ -42,3 +47,26 @@ text = "Stormlight Conquest!"
 label_settings = SubResource("LabelSettings_yv141")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Credit" type="Label" parent="MC" unique_id=1956168166]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "All Cosmere rights and intellectual property
+belong to Brandon Sanderson and Dragonsteel
+Art credits to Isaac Stewart and Michael Whelan"
+
+[node name="TMM" type="Label" parent="MC" unique_id=1342241046]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Game produced by
+Tech Media Magic"
+
+[node name="Start" type="Button" parent="MC" unique_id=259912590]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Start Game!"
+
+[connection signal="pressed" from="MC/Start" to="." method="_on_start_pressed"]
