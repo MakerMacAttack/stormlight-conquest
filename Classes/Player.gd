@@ -1,6 +1,8 @@
 extends Node
 
+
 class_name Player
+
 
 const displayName: String = "" # this maybe needs to be an export? And a var?
 const displayColor: String = "" # hex code of their color.

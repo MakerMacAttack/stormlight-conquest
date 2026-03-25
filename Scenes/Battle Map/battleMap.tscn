@@ -22,16 +22,25 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_0is2j")
 
-[node name="textureRect" type="TextureRect" parent="." unique_id=219481915]
+[node name="battleMap" type="TextureRect" parent="." unique_id=219481915]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -86.0
-offset_right = -403.0
-offset_bottom = -286.0
+offset_left = 200.0
+offset_top = 25.0
+offset_right = -200.0
+offset_bottom = -175.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_is0eg")
 expand_mode = 2
+
+[node name="playerSelect" type="PopupMenu" parent="." unique_id=1498151302]
+oversampling_override = 1.0
+size = Vector2i(139, 100)
+visible = true
+item_count = 1
+item_0/text = "Player Select"
+item_0/id = 0
+item_0/separator = true

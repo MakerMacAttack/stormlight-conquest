@@ -1,4 +1,8 @@
 extends Control
 
+
+@onready var player_select: PopupMenu = $playerSelect
+
+
 func _ready() -> void:
-	pass
+	player_select.visible = true
