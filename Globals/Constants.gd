@@ -1,5 +1,69 @@
 extends Node
 
+const DEFAULT_COLORS = [
+	{
+		"displayName": "Sapphire",
+		"base": "0F52BA",
+		"stroke": "FFFFFF"
+	},
+	{
+		"displayName": "Smokestone",
+		"base": "000000",
+		"stroke": "FFFFFF"
+	},
+	{
+		"displayName": "Ruby",
+		"base": "E0115F",
+		"stroke": "FFFFFF"
+	},
+	{
+		"displayName": "Diamond",
+		"base": "FFFFFF",
+		"stroke": "000000"
+	},
+	{
+		"displayName": "Emerald",
+		"base": "50C878",
+		"stroke": "FFFFFF"
+	},
+	{
+		"displayName": "Garnet",
+		"base": "9A2A2A",
+		"stroke": "FFFFFF"
+	},
+	{
+		"displayName": "Zircon",
+		"base": "F4F8FF",
+		"stroke": "000000"
+	},
+	{
+		"displayName": "Amethyst",
+		"base": "9966CC",
+		"stroke": "FFFFFF"
+	},
+	{
+		"displayName": "Topaz",
+		"base": "FFC87C",
+		"stroke": "FFFFFF"
+	},
+	{
+		"displayName": "Heliodor",
+		"base": "EBC965",
+		"stroke": "000000"
+	},
+	{
+		"displayName": "Neutral",
+		"base": "808080",
+		"stroke": "000000"
+	}
+]
+
+const DENOMINATIONS = [
+	"Chip",
+	"Mark",
+	"Broam"
+]
+
 const DEFAULT_REGIONS = [
 	{
 		"displayName": "Sadeas",

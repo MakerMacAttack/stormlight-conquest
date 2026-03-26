@@ -4,8 +4,30 @@ extends Resource
 class_name Region
 
 
-const displayName: String = ""
+var displayName: String:
+	set(value):
+		displayName = value
+	get:
+		return displayName
 var currentOwner: Player
-var troops: int = 0
-var blades: int = 0
-var plate: int = 0
+var troops: int:
+	set(value):
+		troops = value
+	get:
+		return troops
+var blades: int
+var plate: int
+var manualId: int
+
+func _init(newRegion: Dictionary) -> void:
+	troops = 3
+	blades = 0
+	plate = 0
+	displayName = newRegion.displayName
+	manualId = newRegion.id
+
+func displayTroops() -> void:
+	print('%d troops' % [troops])
+
+func displayId() -> void:
+	print(get_instance_id())

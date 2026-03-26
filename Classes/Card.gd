@@ -5,8 +5,10 @@ class_name Card
 
 
 var region: Region
-const denomination: String = ""
+var denomination: String
+var currentPlayer: Player
 
 
-func _init(region: Region, denomination: String) -> void:
-	pass
+func _init(newRegion: Region, newDenomination: String) -> void:
+	region = newRegion
+	denomination = newDenomination

@@ -1,0 +1,15 @@
+extends Node
+
+
+class_name PlayerColor
+
+
+var displayName: String
+var hex: String
+var stroke: String
+
+
+func _init(color: Dictionary) -> void:
+	displayName = color.displayName
+	hex = color.base
+	stroke = color.stroke
