@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dxe1b1hanp3i"]
+
+[ext_resource type="Script" uid="uid://btugfyys6ldxi" path="res://Scenes/New Player Details/newPlayerDetails.gd" id="1_2hqwm"]
+
+[node name="newPlayerDetails" type="Control" unique_id=1852064428]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2hqwm")
+
+[node name="playerName" type="LineEdit" parent="." unique_id=1356142137]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 31.0
+placeholder_text = "Enter player name here..."
+max_length = 20
+expand_to_text_length = true
+
+[node name="colorSelect" type="OptionButton" parent="." unique_id=765622841]
+layout_mode = 0
+offset_left = 260.0
+offset_right = 310.0
+offset_bottom = 31.0
+item_count = 1
+popup/item_0/id = 0
+
+[connection signal="text_changed" from="playerName" to="." method="_on_player_name_text_changed"]
+[connection signal="item_selected" from="colorSelect" to="." method="_on_color_selected"]

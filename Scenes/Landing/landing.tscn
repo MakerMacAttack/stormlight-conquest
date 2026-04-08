@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bipfagtlvkyv3" path="res://Scenes/Landing/landing.gd" id="1_yv141"]
 
 [sub_resource type="SystemFont" id="SystemFont_hsj2j"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_yv141"]
 font = SubResource("SystemFont_hsj2j")

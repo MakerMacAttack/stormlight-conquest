@@ -3,58 +3,69 @@ extends Node
 const DEFAULT_COLORS = [
 	{
 		"displayName": "Sapphire",
-		"base": "0F52BA",
-		"stroke": "FFFFFF"
+		"accessibilityCode": "s",
+		"base": 0x0F52BAFF,
+		"stroke": 0xFFFFFFFF
 	},
 	{
 		"displayName": "Smokestone",
-		"base": "000000",
-		"stroke": "FFFFFF"
+		"accessibilityCode": "S",
+		"base": 0x000000FF,
+		"stroke": 0xFFFFFFFF
 	},
 	{
 		"displayName": "Ruby",
-		"base": "E0115F",
-		"stroke": "FFFFFF"
+		"accessibilityCode": "r",
+		"base": 0xE0115FFF,
+		"stroke": 0xFFFFFFFF
 	},
 	{
 		"displayName": "Diamond",
-		"base": "FFFFFF",
-		"stroke": "000000"
+		"accessibilityCode": "d",
+		"base": 0xFFFFFFFF,
+		"stroke": 0x000000FF
 	},
 	{
 		"displayName": "Emerald",
-		"base": "50C878",
-		"stroke": "FFFFFF"
+		"accessibilityCode": "e",
+		"base": 0x50C878FF,
+		"stroke": 0xFFFFFFFF
 	},
 	{
 		"displayName": "Garnet",
-		"base": "9A2A2A",
-		"stroke": "FFFFFF"
+		"accessibilityCode": "g",
+		"base": 0x9A2A2AFF,
+		"stroke": 0xFFFFFFFF
 	},
 	{
 		"displayName": "Zircon",
-		"base": "F4F8FF",
-		"stroke": "000000"
+		"accessibilityCode": "z",
+		"base": 0xF4F8FFFF,
+		"stroke": 0x000000FF
 	},
 	{
 		"displayName": "Amethyst",
-		"base": "9966CC",
-		"stroke": "FFFFFF"
+		"accessibilityCode": "a",
+		"base": 0x9966CCFF,
+		"stroke": 0xFFFFFFFF
 	},
 	{
 		"displayName": "Topaz",
-		"base": "FFC87C",
-		"stroke": "FFFFFF"
+		"accessibilityCode": "t",
+		"base": 0xFFC87CFF,
+		"stroke": 0xFFFFFFFF
 	},
 	{
 		"displayName": "Heliodor",
-		"base": "EBC965",
-		"stroke": "000000"
+		"accessibilityCode": "h",
+		"base": 0xEBC965FF,
+		"stroke": 0x000000FF
 	},
 	{
 		"displayName": "Neutral",
-		"base": "808080",
-		"stroke": "000000"
+		"accessibilityCode": "n",
+		"base": 0x808080FF,
+		"stroke": 0x000000FF
 	}
 ]
 
@@ -127,43 +138,43 @@ const DEFAULT_REGIONS = [
 	},
 	{
 		"displayName": "Shattered Plains",
-		"id": 11,
+		"id": 101,
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Unclaimed Hills",
-		"id": 12,
+		"id": 102,
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Dawn's Shadow",
-		"id": 13,
+		"id": 103,
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "New Natanatan",
-		"id": 14,
+		"id": 104,
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Shallow Crypts",
-		"id": 15,
+		"id": 105,
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Thaylen City",
-		"id": 16,
+		"id": 201,
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Kharbranth",
-		"id": 17,
+		"id": 202,
 		"mapX": 0,
 		"mapY": 0
 	},
@@ -472,7 +483,10 @@ const DEFAULT_REGIONS = [
 const DEFAULT_KINGDOMS = [
 	{
 		"displayName": "Alethkar",
-		"bonus": 8
+		"bonus": 8,
+		"regions": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+		# if manualId < 100
+		# if manualId < 200 && manualId <= 100
 	},
 	{
 		"displayName": "Natanatan",

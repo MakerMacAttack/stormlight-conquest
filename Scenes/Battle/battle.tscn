@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://csqv5s2pnke43"]
+
+[ext_resource type="Script" uid="uid://dd7ohrh7jhrcv" path="res://Scenes/Battle/battle.gd" id="1_aqr0y"]
+[ext_resource type="Texture2D" uid="uid://b1aftjypdssqg" path="res://Assets/windandtruthCover.jpg" id="2_wqxgi"]
+[ext_resource type="PackedScene" uid="uid://uniblpxc1lmn" path="res://Scenes/Map/board.tscn" id="3_aqr0y"]
+[ext_resource type="PackedScene" uid="uid://cpwy6t0qj4qfm" path="res://Scenes/Player Select/playerSelect.tscn" id="5_o8bsx"]
+
+[node name="Battle" type="Control" unique_id=1659408509]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aqr0y")
+
+[node name="BG" type="TextureRect" parent="." unique_id=39834937]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wqxgi")
+
+[node name="board" parent="." unique_id=727930261 instance=ExtResource("3_aqr0y")]
+
+[node name="playerSelect" parent="." unique_id=643937382 instance=ExtResource("5_o8bsx")]
+layout_mode = 1

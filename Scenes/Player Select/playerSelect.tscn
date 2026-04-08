@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://cpwy6t0qj4qfm"]
+
+[ext_resource type="Script" uid="uid://irmvnykoemt8" path="res://Scenes/Player Select/playerSelect.gd" id="1_b2816"]
+
+[node name="playerSelect" type="Control" unique_id=643937382]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_b2816")
+
+[node name="colorRect" type="ColorRect" parent="." unique_id=1632202054]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.14509805)
+
+[node name="panelContainer" type="PanelContainer" parent="colorRect" unique_id=1506624336]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -200.0
+offset_right = 175.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vBoxContainer" type="VBoxContainer" parent="colorRect/panelContainer" unique_id=2010039877]
+layout_mode = 2
+
+[node name="label" type="Label" parent="colorRect/panelContainer/vBoxContainer" unique_id=422486450]
+layout_mode = 2
+text = "Player Details"
+horizontal_alignment = 1
+
+[node name="hBoxContainer" type="HBoxContainer" parent="colorRect/panelContainer/vBoxContainer" unique_id=504136656]
+layout_mode = 2
+
+[node name="label" type="Label" parent="colorRect/panelContainer/vBoxContainer/hBoxContainer" unique_id=1998012056]
+layout_mode = 2
+text = "Please select number of players:"
+
+[node name="numberOfPlayers" type="OptionButton" parent="colorRect/panelContainer/vBoxContainer/hBoxContainer" unique_id=393113479]
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "3"
+popup/item_0/id = 0
+popup/item_1/text = "4"
+popup/item_1/id = 1
+popup/item_2/text = "5"
+popup/item_2/id = 2
+popup/item_3/text = "6"
+popup/item_3/id = 3
+
+[node name="playerDetailHolder" type="VBoxContainer" parent="colorRect/panelContainer/vBoxContainer" unique_id=1820391424]
+layout_mode = 2
+alignment = 1
+
+[node name="begin" type="Button" parent="colorRect/panelContainer/vBoxContainer" unique_id=776464024]
+layout_mode = 2
+disabled = true
+text = "Begin"
+
+[connection signal="item_selected" from="colorRect/panelContainer/vBoxContainer/hBoxContainer/numberOfPlayers" to="." method="_on_number_of_players_selected"]
+[connection signal="pressed" from="colorRect/panelContainer/vBoxContainer/begin" to="." method="_on_begin_pressed"]

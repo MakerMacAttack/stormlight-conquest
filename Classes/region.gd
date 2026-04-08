@@ -24,7 +24,7 @@ func _init(newRegion: Dictionary) -> void:
 	blades = 0
 	plate = 0
 	displayName = newRegion.displayName
-	manualId = newRegion.id
+	manualId = newRegion.manualId
 
 func displayTroops() -> void:
 	print('%d troops' % [troops])
