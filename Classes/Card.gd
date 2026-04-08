@@ -1,9 +1,14 @@
 extends Resource
 
+
 class_name Card
 
-var region: Region
-const denomination: String = ""
 
-func _init(region: Region, denomination: String) -> void:
-	pass
+var region: Region
+var denomination: String
+var currentPlayer: Player
+
+
+func _init(newRegion: Region, newDenomination: String) -> void:
+	region = newRegion
+	denomination = newDenomination

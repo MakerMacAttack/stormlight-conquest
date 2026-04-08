@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://uniblpxc1lmn"]
+
+[ext_resource type="Texture2D" uid="uid://bie76buvh7s3w" path="res://Assets/Battle Map.png" id="1_mjv7v"]
+[ext_resource type="Script" uid="uid://blfb25wdlvoi7" path="res://Scenes/Map/board.gd" id="1_nqbwy"]
+
+[node name="board" type="Node2D" unique_id=727930261]
+script = ExtResource("1_nqbwy")
+
+[node name="map" type="TextureRect" parent="." unique_id=443755384]
+offset_right = 2048.0
+offset_bottom = 1536.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_mjv7v")

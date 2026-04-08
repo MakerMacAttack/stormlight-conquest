@@ -1,11 +1,13 @@
 extends Node
 
+
 const LANDING = preload("res://Scenes/Landing/landing.tscn")
-const BATTLE_MAP = preload("res://Scenes/Battle Map/battleMap.tscn")
+const BATTLE = preload("res://Scenes/Battle/battle.tscn")
 const CHANGE = preload("res://Scenes/Change/change.tscn")
 
 var nextScene: PackedScene
 var cx: Change
+
 
 func _ready() -> void:
 	cx = CHANGE.instantiate()
@@ -23,4 +25,4 @@ func loadLandingScene() -> void:
 	startTransition(LANDING)
 
 func loadBattleScene() -> void:
-	startTransition(BATTLE_MAP)
+	startTransition(BATTLE)
