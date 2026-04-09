@@ -1,11 +1,11 @@
 extends Control
 
 
-#@onready var troop_display: TroopDisplay = $board/troopDisplay
-#const PLAYER_SELECT = preload("res://Scenes/Player Select/playerSelect.tscn")
+@onready var player_select: PlayerSelect = $playerSelect
 
 
 var playerColors: Array[PlayerColor]
+var game: Game
 
 
 func _ready() -> void:
@@ -21,4 +21,9 @@ func _ready() -> void:
 	#troop_display.setTroopStrength("w", 89)
 
 func onBegin(numberOfPlayers: int, playerDetails: Array) -> void:
-	print(numberOfPlayers)
+	player_select.queue_free()
+	# instantiate a game with the number of players and details
+	game = Game.new(numberOfPlayers, playerDetails)
+	# generate the various troop strength displays
+	# figure out turn order
+	# figure out the code to make the game proceed through the actions of a turn.

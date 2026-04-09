@@ -5,11 +5,18 @@ class_name Game
 
 
 #var deck: Deck = Deck.new() # it doesn't feel like I'm doing this right
-const players: Array[Player] = []
-var round: int = 1
+var players: Array[Player] = []
+#var round: int = 1
 var currentPlayer: Player
 const regions: Array[Region] = []
 
+
+func _init(numberOfPlayers: int, playerDetails: Array) -> void:
+	for i in numberOfPlayers:
+		var thisPlayer = Player.new(playerDetails[i][0], PlayerColor.new(Constants.DEFAULT_COLORS[playerDetails[i][1]]))
+		players.append(thisPlayer)
+	# make a deck
+	# generate the regions and assign them to players
 
 func autoBattle(attacker: int, defender: int) -> Dictionary:
 	var attackerForce = attacker

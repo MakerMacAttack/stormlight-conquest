@@ -75,7 +75,7 @@ const DENOMINATIONS = [
 	"Broam"
 ]
 
-const DEFAULT_REGIONS = [
+const DEFAULT_REGIONS = [ # restructure all of this, sort them by kingdom, assign manual ID programmatically
 	{
 		"displayName": "Sadeas",
 		"id": 1,
@@ -514,7 +514,7 @@ const DEFAULT_KINGDOMS = [
 	},
 	{
 		"displayName": "Shinovar",
-		"bonus": 6
+		"bonus": 2
 	},
 	{
 		"displayName": "Aimia",
