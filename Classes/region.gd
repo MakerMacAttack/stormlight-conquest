@@ -18,6 +18,7 @@ var troops: int:
 var blades: int
 var plate: int
 var manualId: int
+var borders: Array
 
 func _init(newRegion: Dictionary) -> void:
 	troops = 3
@@ -25,6 +26,7 @@ func _init(newRegion: Dictionary) -> void:
 	plate = 0
 	displayName = newRegion.displayName
 	manualId = newRegion.manualId
+	borders = newRegion.borders
 
 func displayTroops() -> void:
 	print('%d troops' % [troops])

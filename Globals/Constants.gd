@@ -75,406 +75,424 @@ const DENOMINATIONS = [
 	"Broam"
 ]
 
-const DEFAULT_REGIONS = [ # restructure all of this, sort them by kingdom, assign manual ID programmatically
+const DEFAULT_REGIONS = [
 	{
 		"displayName": "Sadeas",
-		"id": 1,
+		"manualId": 1,
+		"borders": [4, 301, 401],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Aladar",
-		"id": 2,
+		"manualId": 2,
+		"borders": [3, 6, 302],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Roion",
-		"id": 3,
+		"manualId": 3,
+		"borders": [2, 6, 102],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Vamah",
-		"id": 4,
+		"manualId": 4,
+		"borders": [1, 5, 407],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Ruthar",
-		"id": 5,
+		"manualId": 5,
+		"borders": [4, 6, 407],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Kholin",
-		"id": 6,
+		"manualId": 6,
+		"borders": [2, 3, 5, 10, 102, 101, 105],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Hatham",
-		"id": 7,
+		"manualId": 7,
+		"borders": [8, 9, 406, 407],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Thanadal",
-		"id": 8,
+		"manualId": 8,
+		"borders": [7, 10],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Bethab",
-		"id": 9,
+		"manualId": 9,
+		"borders": [7, 10, 406, 203],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Sebarial",
-		"id": 10,
+		"manualId": 10,
+		"borders": [6, 8, 9, 105, 203],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Shattered Plains",
-		"id": 101,
+		"manualId": 101,
+		"borders": [102, 103, 104, 105, 6],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Unclaimed Hills",
-		"id": 102,
+		"manualId": 102,
+		"borders": [3, 6, 101, 103],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Dawn's Shadow",
-		"id": 103,
+		"manualId": 103,
+		"borders": [101, 102, 104],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "New Natanatan",
-		"id": 104,
+		"manualId": 104,
+		"borders": [101, 103, 105],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Shallow Crypts",
-		"id": 105,
+		"manualId": 105,
+		"borders": [101, 104, 6, 10, 203],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Thaylen City",
-		"id": 201,
+		"manualId": 201,
+		"borders": [202, 203, 610],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Kharbranth",
-		"id": 202,
+		"manualId": 202,
+		"borders": [201, 203],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
-		"displayName": "Frostlands",
-		"id": 18,
+		"displayName": "West Frostlands",
+		"manualId": 203,
+		"borders": [201, 202, 105, 9, 10],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Herdaz City",
-		"id": 19,
+		"manualId": 301,
+		"borders": [302, 304, 1, 401],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Akak",
-		"id": 20,
+		"manualId": 302,
+		"borders": [301, 2],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Arak",
-		"id": 21,
+		"manualId": 303,
+		"borders": [304],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Sumi",
-		"id": 22,
+		"manualId": 304,
+		"borders": [301, 303, 908],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Northgrip",
-		"id": 23,
+		"manualId": 401,
+		"borders": [1, 402, 403, 407, 301],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Elenar",
-		"id": 24,
+		"manualId": 402,
+		"borders": [401, 403, 501],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Valath",
-		"id": 25,
+		"manualId": 403,
+		"borders": [401, 402, 404, 406, 501],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Bavland",
-		"id": 26,
+		"manualId": 404,
+		"borders": [403, 406, 501],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Silnasen",
-		"id": 27,
+		"manualId": 405,
+		"borders": [406, 613],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
-		"displayName": "Bedenar",
-		"id": 28,
+		"displayName": "Vedenar",
+		"manualId": 406,
+		"borders": [403, 404, 405, 407, 7, 9, 613],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Borderlands",
-		"id": 29,
+		"manualId": 407,
+		"borders": [401, 406, 4, 5, 7],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Tu Bayla",
-		"id": 30,
+		"manualId": 501,
+		"borders": [402, 403, 404, 502, 503],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Marabethia",
-		"id": 31,
+		"manualId": 502,
+		"borders": [501, 504],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Yulay",
-		"id": 32,
+		"manualId": 503,
+		"borders": [501, 504, 601],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Babatharnam",
-		"id": 33,
+		"manualId": 504,
+		"borders": [502, 503, 902],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Azimir",
-		"id": 34,
+		"manualId": 601,
+		"borders": [602, 603, 607, 608, 503],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Desh",
-		"id": 35,
+		"manualId": 602,
+		"borders": [601, 603],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Yezier",
-		"id": 36,
+		"manualId": 603,
+		"borders": [601, 602, 604, 605, 605, 607],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Alm",
-		"id": 37,
+		"manualId": 604,
+		"borders": [603, 605, 703],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Liafor",
-		"id": 38,
+		"manualId": 605,
+		"borders": [603, 604, 606, 607],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Steen",
-		"id": 39,
+		"manualId": 606,
+		"borders": [605, 801],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Tashikk",
-		"id": 40,
+		"manualId": 607,
+		"borders": [601, 603, 605, 608],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Emul",
-		"id": 41,
+		"manualId": 608,
+		"borders": [601, 607, 609, 610, 611],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Tukar",
-		"id": 42,
+		"manualId": 609,
+		"borders": [608, 610],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Marat",
-		"id": 43,
+		"manualId": 610,
+		"borders": [608, 609, 611, 201],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Greater Hexi",
-		"id": 44,
+		"manualId": 611,
+		"borders": [608, 610, 612],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Tu Fallia",
-		"id": 45,
+		"manualId": 612,
+		"borders": [611, 613],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Triax",
-		"id": 46,
+		"manualId": 613,
+		"borders": [612, 405, 406],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
-		"displayName": "Bondsmith",
-		"id": 47,
+		"displayName": "North Shinovar",
+		"manualId": 701,
+		"borders": [702, 703, 901],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
-		"displayName": "Windrunner",
-		"id": 48,
+		"displayName": "West Shinovar",
+		"manualId": 702,
+		"borders": [701, 703],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
-		"displayName": "Skybreaker",
-		"id": 49,
-		"mapX": 0,
-		"mapY": 0
-	},
-	{
-		"displayName": "Dustbringer",
-		"id": 50,
-		"mapX": 0,
-		"mapY": 0
-	},
-	{
-		"displayName": "Edgedancer",
-		"id": 51,
-		"mapX": 0,
-		"mapY": 0
-	},
-	{
-		"displayName": "Truthwatcher",
-		"id": 52,
-		"mapX": 0,
-		"mapY": 0
-	},
-	{
-		"displayName": "Lightweaver",
-		"id": 53,
-		"mapX": 0,
-		"mapY": 0
-	},
-	{
-		"displayName": "Elsecaller",
-		"id": 54,
-		"mapX": 0,
-		"mapY": 0
-	},
-	{
-		"displayName": "Willshaper",
-		"id": 55,
-		"mapX": 0,
-		"mapY": 0
-	},
-	{
-		"displayName": "Stoneward",
-		"id": 56,
+		"displayName": "South Shinovar",
+		"manualId": 703,
+		"borders": [701, 702, 604, 801],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Aimia",
-		"id": 57,
+		"manualId": 801,
+		"borders": [802, 803, 703, 606],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Akinah",
-		"id": 58,
+		"manualId": 802,
+		"borders": [801, 803],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Third Isle",
-		"id": 59,
+		"manualId": 803,
+		"borders": [801, 802],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Eila",
-		"id": 60,
+		"manualId": 901,
+		"borders": [902, 904, 701],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Rira",
-		"id": 61,
+		"manualId": 902,
+		"borders": [901, 903, 904, 504],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Kurth",
-		"id": 62,
+		"manualId": 903,
+		"borders": [902, 908],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Kasitor",
-		"id": 63,
+		"manualId": 904,
+		"borders": [901, 902, 905],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Rall Elorim",
-		"id": 64,
+		"manualId": 905,
+		"borders": [904, 906],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Quili",
-		"id": 65,
+		"manualId": 906,
+		"borders": [905, 907],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Abri",
-		"id": 66,
+		"manualId": 907,
+		"borders": [906, 908],
 		"mapX": 0,
 		"mapY": 0
 	},
 	{
 		"displayName": "Kadrix",
-		"id": 67,
+		"manualId": 908,
+		"borders": [903, 907, 304],
 		"mapX": 0,
 		"mapY": 0
 	}

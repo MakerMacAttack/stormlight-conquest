@@ -19,6 +19,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 3.0
+offset_right = -2.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_wqxgi")
@@ -31,14 +35,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="mapAndCards" type="VBoxContainer" parent="hBoxContainer" unique_id=93987747]
-custom_minimum_size = Vector2(717, 0)
-layout_mode = 2
+[node name="board" parent="hBoxContainer" unique_id=727930261 instance=ExtResource("3_aqr0y")]
+scale = Vector2(0.9, 0.9)
 
-[node name="board" parent="hBoxContainer/mapAndCards" unique_id=727930261 instance=ExtResource("3_aqr0y")]
-
-[node name="actionsAndHelp" type="VBoxContainer" parent="hBoxContainer" unique_id=443620087]
+[node name="actionsCardsHelp" type="VBoxContainer" parent="hBoxContainer" unique_id=443620087]
 layout_mode = 2
 
 [node name="playerSelect" parent="." unique_id=643937382 instance=ExtResource("5_o8bsx")]
+visible = false
 layout_mode = 1

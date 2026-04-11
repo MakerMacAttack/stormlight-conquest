@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bie76buvh7s3w" path="res://Assets/Battle Map.png" id="1_mjv7v"]
 [ext_resource type="Script" uid="uid://blfb25wdlvoi7" path="res://Scenes/Map/board.gd" id="1_nqbwy"]
+[ext_resource type="PackedScene" uid="uid://ysb0wmnepowp" path="res://Scenes/Troop Display/troopDisplay.tscn" id="3_7r5p4"]
 
 [node name="board" type="Node2D" unique_id=727930261]
 script = ExtResource("1_nqbwy")
@@ -9,5 +10,12 @@ script = ExtResource("1_nqbwy")
 [node name="map" type="TextureRect" parent="." unique_id=443755384]
 offset_right = 2048.0
 offset_bottom = 1536.0
-scale = Vector2(0.35, 0.35)
+scale = Vector2(0.42, 0.42)
 texture = ExtResource("1_mjv7v")
+
+[node name="troopDisplay" parent="map" unique_id=493681303 instance=ExtResource("3_7r5p4")]
+layout_mode = 0
+offset_left = 1523.8096
+offset_top = 585.7143
+offset_right = 1563.8096
+offset_bottom = 625.7143
