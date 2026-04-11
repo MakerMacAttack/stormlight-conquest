@@ -8,13 +8,16 @@ class_name Game
 var players: Array[Player] = []
 #var round: int = 1
 var currentPlayer: Player
-const regions: Array[Region] = []
+var regions: Array[Region] = []
 
 
 func _init(numberOfPlayers: int, playerDetails: Array) -> void:
 	for i in numberOfPlayers:
 		var thisPlayer = Player.new(playerDetails[i][0], PlayerColor.new(Constants.DEFAULT_COLORS[playerDetails[i][1]]))
 		players.append(thisPlayer)
+	for i in Constants.DEFAULT_REGIONS.size():
+		var newRegion: Region = Region.new(Constants.DEFAULT_REGIONS[i], players[i % numberOfPlayers])
+		regions.append(newRegion)
 	# make a deck
 	# generate the regions and assign them to players
 

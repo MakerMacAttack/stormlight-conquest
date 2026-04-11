@@ -19,14 +19,17 @@ var blades: int
 var plate: int
 var manualId: int
 var borders: Array
+var spawnPoint: Vector2
 
-func _init(newRegion: Dictionary) -> void:
+func _init(newRegion: Dictionary, newOwner: Player) -> void:
 	troops = 3
 	blades = 0
 	plate = 0
 	displayName = newRegion.displayName
 	manualId = newRegion.manualId
 	borders = newRegion.borders
+	currentOwner = newOwner
+	spawnPoint = Vector2(newRegion.mapX, newRegion.mapY)
 
 func displayTroops() -> void:
 	print('%d troops' % [troops])

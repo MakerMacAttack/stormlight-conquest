@@ -42,5 +42,4 @@ scale = Vector2(0.9, 0.9)
 layout_mode = 2
 
 [node name="playerSelect" parent="." unique_id=643937382 instance=ExtResource("5_o8bsx")]
-visible = false
 layout_mode = 1

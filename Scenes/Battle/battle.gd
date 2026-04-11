@@ -2,6 +2,10 @@ extends Control
 
 
 @onready var player_select: PlayerSelect = $playerSelect
+@onready var board: Board = $hBoxContainer/board
+
+
+const TROOP_DISPLAY = preload("res://Scenes/Troop Display/troopDisplay.tscn")
 
 
 var playerColors: Array[PlayerColor]
@@ -24,6 +28,13 @@ func onBegin(numberOfPlayers: int, playerDetails: Array) -> void:
 	player_select.queue_free()
 	# instantiate a game with the number of players and details
 	game = Game.new(numberOfPlayers, playerDetails)
+	# set the region displays
+	for region in game.regions:
+		var createTroopDisplay: TroopDisplay = TROOP_DISPLAY.instantiate()
+		createTroopDisplay.set_position(region.spawnPoint)
+		board.displayTroopStrength(createTroopDisplay)
+		createTroopDisplay.setTroopStrength(region.currentOwner.colorTheme.accessibilityCode, 3)
+		createTroopDisplay.changeColor(region.currentOwner.colorTheme.hex, region.currentOwner.colorTheme.stroke)
 	# generate the various troop strength displays
 	# figure out turn order
 	# figure out the code to make the game proceed through the actions of a turn.
