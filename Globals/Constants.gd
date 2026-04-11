@@ -490,45 +490,47 @@ const DEFAULT_KINGDOMS = [
 	},
 	{
 		"displayName": "Natanatan",
-		"bonus": 4
+		"bonus": 4,
+		"regions": [101, 102, 103, 104, 105]
 	},
 	{
 		"displayName": "Thaylenah",
-		"bonus": 3
+		"bonus": 3,
+		"regions": [201, 202, 203]
 	},
 	{
 		"displayName": "Herdaz",
-		"bonus": 4
+		"bonus": 4,
+		"regions": [301, 302, 303, 304]
 	},
 	{
 		"displayName": "Jah Keved",
-		"bonus": 6
+		"bonus": 6,
+		"regions": [401, 402, 403, 404, 405, 406, 407]
 	},
 	{
 		"displayName": "Sela Tales",
-		"bonus": 4
+		"bonus": 4,
+		"regions": [501, 502, 503, 504]
 	},
 	{
 		"displayName": "Azish Empire",
-		"bonus": 9
+		"bonus": 9,
+		"regions": [601, 602, 603, 604, 605, 606, 607, 608, 609, 610, 611, 612, 613]
 	},
 	{
 		"displayName": "Shinovar",
-		"bonus": 2
+		"bonus": 2,
+		"regions": [701, 702, 703]
 	},
 	{
 		"displayName": "Aimia",
-		"bonus": 2
+		"bonus": 2,
+		"regions": [801, 802, 803]
 	},
 	{
 		"displayName": "Iri",
-		"bonus": 5
+		"bonus": 5,
+		"regions": [901, 902, 903, 904, 905, 906, 907, 908]
 	},
-]
-
-const DEFAULT_BORDERS = [
-	{
-		"region1": 123,
-		"region2": 456
-	}
 ]
