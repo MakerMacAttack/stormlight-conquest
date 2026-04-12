@@ -15,7 +15,7 @@ const DEFAULT_COLORS = [
 	},
 	{
 		"displayName": "Smokestone",
-		"accessibilityCode": "S",
+		"accessibilityCode": "k",
 		"base": 0x000000FF,
 		"stroke": 0xFFFFFFFF
 	},
