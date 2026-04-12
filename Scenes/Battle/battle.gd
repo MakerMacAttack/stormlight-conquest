@@ -2,7 +2,8 @@ extends Control
 
 
 @onready var player_select: PlayerSelect = $playerSelect
-@onready var board: Board = $hBoxContainer/board
+#@onready var board: Board = $hBoxContainer/board
+@onready var board: Board = $hBoxContainer/subViewportContainer/subViewport/board
 
 
 const TROOP_DISPLAY = preload("res://Scenes/Troop Display/troopDisplay.tscn")
@@ -10,7 +11,17 @@ const TROOP_DISPLAY = preload("res://Scenes/Troop Display/troopDisplay.tscn")
 
 var playerColors: Array[PlayerColor]
 var game: Game
-
+#default zoom is set to 0.9 in the map because of scaling on the board
+var defaultZoom: float = 0.9
+var maxZoom: float = 3.0
+var zoom: float = defaultZoom
+#new variable to prevent over zooming adjustments
+var prevZoom: float = zoom 
+var zoom_speed: float = 0.1
+var scrollSpeed: float = 10
+var maxValueX: int = -775
+var maxValueY: int = -580
+var zoomScaling: float = 1.09
 
 func _ready() -> void:
 	SignalHub.gameBegin.connect(onBegin)
@@ -41,3 +52,40 @@ func onBegin(numberOfPlayers: int, playerDetails: Array) -> void:
 	# generate the various troop strength displays
 	# figure out turn order
 	# figure out the code to make the game proceed through the actions of a turn.
+
+#new function to pan and zoom map
+func _unhandled_input(event: InputEvent) -> void:
+	
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
+			zoom = clamp(zoom + zoom_speed, defaultZoom, maxZoom)
+			print("zoom: ",zoom)
+			#zooming in on map will adjust pan so that the focus stays centered (more or less) by adjusting x and y position when the zoom changes
+			if zoom != prevZoom: board.position.x = clamp(board.position.x*(zoomScaling), maxValueX*(zoom-defaultZoom)/defaultZoom, 0)
+			print("x: ",board.position.x)
+			if zoom != prevZoom: board.position.y = clamp(board.position.y*(zoomScaling), maxValueY*(zoom-defaultZoom)/defaultZoom, 0)
+			print("y: ",board.position.y)
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
+			zoom = clamp(zoom - zoom_speed, defaultZoom, maxZoom)
+			print("zoom: ",zoom)
+			board.position.x = clamp(board.position.x*(1/zoomScaling), maxValueX*(zoom-defaultZoom)/defaultZoom, 0)
+			print("x: ",board.position.x)
+			board.position.y = clamp(board.position.y*(1/zoomScaling), maxValueY*(zoom-defaultZoom)/defaultZoom, 0)
+			print("y: ",board.position.y)
+		prevZoom = zoom
+		board.scale = Vector2(zoom, zoom)
+
+	#zooming in on map will adjust maximum x and y positions and increase scroll speed
+	if event.is_action_pressed("ui_left"):
+		board.position.x = clamp(board.position.x + scrollSpeed*zoom, maxValueX*(zoom-defaultZoom)/defaultZoom, 0)
+		print(board.position.x)
+	if event.is_action_pressed("ui_right"):
+		board.position.x = clamp(board.position.x - scrollSpeed*zoom, maxValueX*(zoom-defaultZoom)/defaultZoom, 0)
+		print(board.position.x)
+	if event.is_action_pressed("ui_up"):
+		board.position.y = clamp(board.position.y + scrollSpeed*zoom, maxValueY*(zoom-defaultZoom)/defaultZoom, 0)
+		print(board.position.y)
+	if event.is_action_pressed("ui_down"):
+		board.position.y = clamp(board.position.y - scrollSpeed*zoom, maxValueY*(zoom-defaultZoom)/defaultZoom, 0)
+		print(board.position.y)
+		
