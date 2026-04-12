@@ -2,6 +2,12 @@ extends Node
 
 const DEFAULT_COLORS = [
 	{
+		"displayName": "Neutral",
+		"accessibilityCode": "n",
+		"base": 0x808080FF,
+		"stroke": 0x000000FF
+	},
+	{
 		"displayName": "Sapphire",
 		"accessibilityCode": "s",
 		"base": 0x0F52BAFF,
@@ -59,12 +65,6 @@ const DEFAULT_COLORS = [
 		"displayName": "Heliodor",
 		"accessibilityCode": "h",
 		"base": 0xEBC965FF,
-		"stroke": 0x000000FF
-	},
-	{
-		"displayName": "Neutral",
-		"accessibilityCode": "n",
-		"base": 0x808080FF,
 		"stroke": 0x000000FF
 	}
 ]

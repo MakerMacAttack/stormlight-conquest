@@ -15,11 +15,16 @@ func _init(numberOfPlayers: int, playerDetails: Array) -> void:
 	for i in numberOfPlayers:
 		var thisPlayer = Player.new(playerDetails[i][0], PlayerColor.new(Constants.DEFAULT_COLORS[playerDetails[i][1]]))
 		players.append(thisPlayer)
-	for i in Constants.DEFAULT_REGIONS.size():
-		var newRegion: Region = Region.new(Constants.DEFAULT_REGIONS[i], players[i % numberOfPlayers])
+	# make a new array copying the default regions and then shuffle
+	var thisRegions = []
+	for region in Constants.DEFAULT_REGIONS:
+		thisRegions.append(region)
+	thisRegions.shuffle()
+	# assign each region to a player
+	for i in thisRegions.size():
+		var newRegion: Region = Region.new(thisRegions[i], players[i % numberOfPlayers])
 		regions.append(newRegion)
 	# make a deck
-	# generate the regions and assign them to players
 
 func autoBattle(attacker: int, defender: int) -> Dictionary:
 	var attackerForce = attacker

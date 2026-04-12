@@ -34,7 +34,10 @@ func onBegin(numberOfPlayers: int, playerDetails: Array) -> void:
 		createTroopDisplay.set_position(region.spawnPoint)
 		board.displayTroopStrength(createTroopDisplay)
 		createTroopDisplay.setTroopStrength(region.currentOwner.colorTheme.accessibilityCode, 3)
-		createTroopDisplay.changeColor(region.currentOwner.colorTheme.hex, region.currentOwner.colorTheme.stroke)
+		var newSettings = LabelSettings.new()
+		newSettings.font_color = region.currentOwner.colorTheme.hex
+		newSettings.outline_color = region.currentOwner.colorTheme.stroke
+		createTroopDisplay.changeColor(newSettings)
 	# generate the various troop strength displays
 	# figure out turn order
 	# figure out the code to make the game proceed through the actions of a turn.
