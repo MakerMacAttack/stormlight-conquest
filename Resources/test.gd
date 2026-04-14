@@ -6,8 +6,10 @@ func _run() -> void:
 	
 	#check regions to make sure borders match up nicely
 	var regions: Array[Region]
+	var testColor = PlayerColor.new(Constants.DEFAULT_COLORS[1])
+	var testPlayer = Player.new("Kaladin", testColor)
 	for region in Constants.DEFAULT_REGIONS:
-		regions.append(Region.new(region))
+		regions.append(Region.new(region, testPlayer))
 	for region in regions:
 		var fine = true
 		print("%s check:" % [region.displayName])

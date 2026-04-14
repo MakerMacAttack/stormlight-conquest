@@ -3,7 +3,8 @@ extends Control
 
 @onready var player_select: PlayerSelect = $playerSelect
 #@onready var board: Board = $hBoxContainer/board
-@onready var board: Board = $hBoxContainer/subViewportContainer/subViewport/board
+#@onready var board: Board = $hBoxContainer/subViewportContainer/subViewport/board
+@onready var board: Board = $hBoxContainer/mapCards/subViewportContainer/subViewport/board
 
 
 const TROOP_DISPLAY = preload("res://Scenes/Troop Display/troopDisplay.tscn")

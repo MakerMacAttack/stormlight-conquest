@@ -15,5 +15,3 @@ func _init(kingdom: Dictionary) -> void:
 	upperBound = kingdom.upperBound
 	displayName = kingdom.displayName
 	bonus = kingdom.bonus
-	for i in kingdom.regions.length:
-		regions.append(Region.new({"displayName": kingdom.regions[i], "manualId": kingdom.lowerBound + i}))

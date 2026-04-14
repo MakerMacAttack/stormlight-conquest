@@ -35,17 +35,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="subViewportContainer" type="SubViewportContainer" parent="hBoxContainer" unique_id=911481458]
+[node name="mapCards" type="VBoxContainer" parent="hBoxContainer" unique_id=2025521617]
 layout_mode = 2
 
-[node name="subViewport" type="SubViewport" parent="hBoxContainer/subViewportContainer" unique_id=431778190]
+[node name="subViewportContainer" type="SubViewportContainer" parent="hBoxContainer/mapCards" unique_id=911481458]
+layout_mode = 2
+
+[node name="subViewport" type="SubViewport" parent="hBoxContainer/mapCards/subViewportContainer" unique_id=431778190]
+handle_input_locally = false
 size = Vector2i(775, 579)
 render_target_update_mode = 4
 
-[node name="board" parent="hBoxContainer/subViewportContainer/subViewport" unique_id=727930261 instance=ExtResource("3_aqr0y")]
+[node name="board" parent="hBoxContainer/mapCards/subViewportContainer/subViewport" unique_id=727930261 instance=ExtResource("3_aqr0y")]
 scale = Vector2(0.9, 0.9)
 
-[node name="actionsCardsHelp" type="VBoxContainer" parent="hBoxContainer" unique_id=443620087]
+[node name="actionsHelp" type="VBoxContainer" parent="hBoxContainer" unique_id=443620087]
 layout_mode = 2
 
 [node name="playerSelect" parent="." unique_id=643937382 instance=ExtResource("5_o8bsx")]
