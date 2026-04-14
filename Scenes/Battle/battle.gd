@@ -21,7 +21,7 @@ var zoom: float = defaultZoom
 #new variable to prevent over zooming adjustments
 var prevZoom: float = zoom 
 var zoom_speed: float = 0.1
-var scrollSpeed: float = 10
+var scrollSpeed: float = 25
 var maxValueX: int = -775
 var maxValueY: int = -580
 var zoomScaling: float = 1.09
@@ -87,16 +87,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		board.scale = Vector2(zoom, zoom)
 
 	#zooming in on map will adjust maximum x and y positions and increase scroll speed
-	if event.is_action_pressed("ui_left"):
+	if event.is_action_pressed("ui_left", true):
 		board.position.x = clamp(board.position.x + scrollSpeed*zoom, maxValueX*(zoom-defaultZoom)/defaultZoom, 0)
 		print(board.position.x)
-	if event.is_action_pressed("ui_right"):
+	if event.is_action_pressed("ui_right", true):
 		board.position.x = clamp(board.position.x - scrollSpeed*zoom, maxValueX*(zoom-defaultZoom)/defaultZoom, 0)
 		print(board.position.x)
-	if event.is_action_pressed("ui_up"):
+	if event.is_action_pressed("ui_up", true):
 		board.position.y = clamp(board.position.y + scrollSpeed*zoom, maxValueY*(zoom-defaultZoom)/defaultZoom, 0)
 		print(board.position.y)
-	if event.is_action_pressed("ui_down"):
+	if event.is_action_pressed("ui_down", true):
 		board.position.y = clamp(board.position.y - scrollSpeed*zoom, maxValueY*(zoom-defaultZoom)/defaultZoom, 0)
 		print(board.position.y)
 
