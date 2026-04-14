@@ -15,7 +15,6 @@ var territories: Array[Region] = []:
 		for i in newTerritories.size():
 			territories.append(newTerritories[i])
 			select_region.add_item(newTerritories[i].displayName, newTerritories[i].get_instance_id())
-			print(newTerritories[i].get_instance_id())
 	get:
 		return territories
 var bonus: int = 0:
@@ -23,7 +22,6 @@ var bonus: int = 0:
 		select_bonus.clear()
 		bonus += change
 		for i in bonus:
-			print(i)
 			select_bonus.add_item(str(i), i)
 const pity: int = 3
 

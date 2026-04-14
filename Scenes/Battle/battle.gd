@@ -51,9 +51,11 @@ func onBegin(numberOfPlayers: int, playerDetails: Array) -> void:
 		var newSettings = LabelSettings.new()
 		newSettings.font_color = region.currentOwner.colorTheme.hex
 		newSettings.outline_color = region.currentOwner.colorTheme.stroke
+		newSettings.outline_size = 5
 		createTroopDisplay.changeColor(newSettings)
 	# basically everything below this should prolly be abstracted to a separate function.
 	var attachReinforcement: Reinforcement = REINFORCEMENT.instantiate()
+	attachReinforcement.custom_minimum_size = Vector2(0,400)
 	actions_help.add_child(attachReinforcement)
 	var currentPlayerRegions = game.regions.filter(filterRegions)
 	attachReinforcement.territories = currentPlayerRegions
