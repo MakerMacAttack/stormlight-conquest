@@ -33,26 +33,28 @@ alignment = 1
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="label" type="Label" parent="vBoxContainer/hBoxContainer/vBoxContainer" unique_id=446031492]
+[node name="labelRegion" type="Label" parent="vBoxContainer/hBoxContainer/vBoxContainer" unique_id=446031492]
 layout_mode = 2
 text = "Kingdom"
 horizontal_alignment = 1
 
-[node name="optionButton" type="OptionButton" parent="vBoxContainer/hBoxContainer/vBoxContainer" unique_id=1816534065]
+[node name="selectRegion" type="OptionButton" parent="vBoxContainer/hBoxContainer/vBoxContainer" unique_id=1816534065]
 layout_mode = 2
 
 [node name="vBoxContainer2" type="VBoxContainer" parent="vBoxContainer/hBoxContainer" unique_id=524913664]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="label" type="Label" parent="vBoxContainer/hBoxContainer/vBoxContainer2" unique_id=2033751826]
+[node name="labelTroops" type="Label" parent="vBoxContainer/hBoxContainer/vBoxContainer2" unique_id=2033751826]
 layout_mode = 2
 text = "Troops"
 horizontal_alignment = 1
 
-[node name="optionButton" type="OptionButton" parent="vBoxContainer/hBoxContainer/vBoxContainer2" unique_id=1126309308]
+[node name="selectBonus" type="OptionButton" parent="vBoxContainer/hBoxContainer/vBoxContainer2" unique_id=1126309308]
 layout_mode = 2
 
-[node name="button" type="Button" parent="vBoxContainer" unique_id=1084065822]
+[node name="reinforceButton" type="Button" parent="vBoxContainer" unique_id=1084065822]
 layout_mode = 2
 text = "Reinforce!"
+
+[connection signal="pressed" from="vBoxContainer/reinforceButton" to="." method="_on_reinforce_button_pressed"]

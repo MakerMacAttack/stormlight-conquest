@@ -5,9 +5,11 @@ extends Control
 #@onready var board: Board = $hBoxContainer/board
 #@onready var board: Board = $hBoxContainer/subViewportContainer/subViewport/board
 @onready var board: Board = $hBoxContainer/mapCards/subViewportContainer/subViewport/board
+@onready var actions_help: VBoxContainer = $hBoxContainer/actionsHelp
 
 
 const TROOP_DISPLAY = preload("res://Scenes/Troop Display/troopDisplay.tscn")
+const REINFORCEMENT = preload("res://Scenes/Reinforcement/reinforcement.tscn")
 
 
 var playerColors: Array[PlayerColor]
@@ -50,6 +52,12 @@ func onBegin(numberOfPlayers: int, playerDetails: Array) -> void:
 		newSettings.font_color = region.currentOwner.colorTheme.hex
 		newSettings.outline_color = region.currentOwner.colorTheme.stroke
 		createTroopDisplay.changeColor(newSettings)
+	# basically everything below this should prolly be abstracted to a separate function.
+	var attachReinforcement: Reinforcement = REINFORCEMENT.instantiate()
+	actions_help.add_child(attachReinforcement)
+	var currentPlayerRegions = game.regions.filter(filterRegions)
+	attachReinforcement.territories = currentPlayerRegions
+	attachReinforcement.bonus = 3
 	# generate the various troop strength displays
 	# figure out turn order
 	# figure out the code to make the game proceed through the actions of a turn.
@@ -89,4 +97,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_down"):
 		board.position.y = clamp(board.position.y - scrollSpeed*zoom, maxValueY*(zoom-defaultZoom)/defaultZoom, 0)
 		print(board.position.y)
-		
+
+func filterRegions(checkRegion: Region) -> bool:
+	return checkRegion.currentOwner == game.currentPlayer
