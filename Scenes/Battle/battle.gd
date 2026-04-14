@@ -28,6 +28,7 @@ var zoomScaling: float = 1.09
 
 func _ready() -> void:
 	SignalHub.gameBegin.connect(onBegin)
+	SignalHub.refreshLabels.connect(updateAllLabels)
 	for newColor in Constants.DEFAULT_COLORS:
 		if newColor.displayName != "Neutral":
 			playerColors.append(PlayerColor.new(newColor))
@@ -45,6 +46,8 @@ func onBegin(numberOfPlayers: int, playerDetails: Array) -> void:
 	# set the region displays
 	for region in game.regions:
 		var createTroopDisplay: TroopDisplay = TROOP_DISPLAY.instantiate()
+		createTroopDisplay.setLocalRegion(region)
+		print(createTroopDisplay.localRegion)
 		createTroopDisplay.set_position(region.spawnPoint)
 		board.displayTroopStrength(createTroopDisplay)
 		createTroopDisplay.setTroopStrength(region.currentOwner.colorTheme.accessibilityCode, 3)
@@ -63,6 +66,13 @@ func onBegin(numberOfPlayers: int, playerDetails: Array) -> void:
 	# generate the various troop strength displays
 	# figure out turn order
 	# figure out the code to make the game proceed through the actions of a turn.
+
+func updateAllLabels() -> void:
+	var theMap = board.get_child(0)
+	var theLabels = theMap.get_children()
+	for i in theLabels.size():
+		#print(theLabels[i])
+		theLabels[i].updateLabel()
 
 #new function to pan and zoom map
 func _unhandled_input(event: InputEvent) -> void:

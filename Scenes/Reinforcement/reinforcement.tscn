@@ -40,6 +40,9 @@ horizontal_alignment = 1
 
 [node name="selectRegion" type="OptionButton" parent="vBoxContainer/hBoxContainer/vBoxContainer" unique_id=1816534065]
 layout_mode = 2
+item_count = 1
+popup/item_0/text = "-"
+popup/item_0/id = 0
 
 [node name="vBoxContainer2" type="VBoxContainer" parent="vBoxContainer/hBoxContainer" unique_id=524913664]
 custom_minimum_size = Vector2(100, 0)
@@ -55,6 +58,9 @@ layout_mode = 2
 
 [node name="reinforceButton" type="Button" parent="vBoxContainer" unique_id=1084065822]
 layout_mode = 2
+disabled = true
 text = "Reinforce!"
 
+[connection signal="item_selected" from="vBoxContainer/hBoxContainer/vBoxContainer/selectRegion" to="." method="_on_select_region_selected"]
+[connection signal="item_selected" from="vBoxContainer/hBoxContainer/vBoxContainer2/selectBonus" to="." method="_on_select_bonus_selected"]
 [connection signal="pressed" from="vBoxContainer/reinforceButton" to="." method="_on_reinforce_button_pressed"]
