@@ -40,9 +40,6 @@ horizontal_alignment = 1
 
 [node name="selectRegion" type="OptionButton" parent="vBoxContainer/hBoxContainer/vBoxContainer" unique_id=1816534065]
 layout_mode = 2
-item_count = 1
-popup/item_0/text = "-"
-popup/item_0/id = 0
 
 [node name="vBoxContainer2" type="VBoxContainer" parent="vBoxContainer/hBoxContainer" unique_id=524913664]
 custom_minimum_size = Vector2(100, 0)

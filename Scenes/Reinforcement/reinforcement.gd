@@ -30,9 +30,6 @@ var selectedRegion: Region
 var selectedBonus: int = 0
 
 
-signal reinforcePhaseEnd
-
-
 func addToBonus(extraBonus) -> void:
 	bonus += extraBonus
 
@@ -40,18 +37,15 @@ func _on_reinforce_button_pressed() -> void:
 	if selectedRegion == null || selectedBonus == 0:
 		pass
 	else:
-		print(selectedRegion.troops)
-		print(selectedRegion.displayName)
-		print(select_bonus)
 		selectedRegion.troops = selectedRegion.troops + selectedBonus
-		print(selectedRegion.troops)
 		bonus = -1 * selectedBonus # because I'm using a setter I have to pass it this way
 		selectedRegion = null
 		selectedBonus = 0
 		select_bonus.select(0)
 		select_region.select(0)
 	SignalHub.onUpdateTroops()
-	# if bonus now equals 0, emit the signal that this phase is done.
+	if bonus == 0:
+		SignalHub.onReinforcementBonusZero()
 
 
 func _on_select_region_selected(index: int) -> void:

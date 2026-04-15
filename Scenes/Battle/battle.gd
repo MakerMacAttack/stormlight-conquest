@@ -2,8 +2,6 @@ extends Control
 
 
 @onready var player_select: PlayerSelect = $playerSelect
-#@onready var board: Board = $hBoxContainer/board
-#@onready var board: Board = $hBoxContainer/subViewportContainer/subViewport/board
 @onready var board: Board = $hBoxContainer/mapCards/subViewportContainer/subViewport/board
 @onready var actions_help: VBoxContainer = $hBoxContainer/actionsHelp
 
@@ -29,6 +27,7 @@ var zoomScaling: float = 1.09
 func _ready() -> void:
 	SignalHub.gameBegin.connect(onBegin)
 	SignalHub.refreshLabels.connect(updateAllLabels)
+	SignalHub.endReinforce.connect(reinforceEnd)
 	for newColor in Constants.DEFAULT_COLORS:
 		if newColor.displayName != "Neutral":
 			playerColors.append(PlayerColor.new(newColor))
@@ -60,12 +59,23 @@ func onBegin(numberOfPlayers: int, playerDetails: Array) -> void:
 	var attachReinforcement: Reinforcement = REINFORCEMENT.instantiate()
 	attachReinforcement.custom_minimum_size = Vector2(0,400)
 	actions_help.add_child(attachReinforcement)
+	actions_help.set
 	var currentPlayerRegions = game.regions.filter(filterRegions)
 	attachReinforcement.territories = currentPlayerRegions
 	attachReinforcement.bonus = 3
 	# generate the various troop strength displays
 	# figure out turn order
 	# figure out the code to make the game proceed through the actions of a turn.
+
+func reinforceEnd() -> void:
+	get_node(^"hBoxContainer/actionsHelp/Reinforcement").queue_free() # this can't be the best way to do this.
+	# get every region owned by the current owner
+	# Because we just reinforced, it's impossible to have none with >1 troop
+	# Narrow to the ones with >1 troop
+	# Make a collective Set of all neighbors from all regions
+	# Get all those regions
+	# If at least one is owned by a foe, advance to Combat Phase
+	# Else, advance to Redeployment Phase
 
 func updateAllLabels() -> void:
 	var theMap = board.get_child(0)
