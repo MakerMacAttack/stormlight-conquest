@@ -3,6 +3,17 @@
 [ext_resource type="Texture2D" uid="uid://dua77l8al8ut7" path="res://Assets/WayOfKingsCover.jpg" id="1_hsj2j"]
 [ext_resource type="Script" uid="uid://bipfagtlvkyv3" path="res://Scenes/Landing/landing.gd" id="1_yv141"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_tcxbp"]
+font_size = 19
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_wqw13"]
+font_size = 50
+font_color = Color(1, 0, 0, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="SystemFont" id="SystemFont_hsj2j"]
 subpixel_positioning = 0
 
@@ -28,6 +39,32 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_hsj2j")
 expand_mode = 2
+
+[node name="feedback" type="Label" parent="BG" unique_id=1859638353]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 179.0
+offset_right = 335.0
+offset_bottom = 266.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Feedback?
+Want to sign up for updates?
+StormlightConquest@gmail.com"
+label_settings = SubResource("LabelSettings_tcxbp")
+horizontal_alignment = 1
+
+[node name="demo" type="Label" parent="BG" unique_id=1873043642]
+layout_mode = 0
+offset_left = 911.0
+offset_top = 46.0
+offset_right = 1114.0
+offset_bottom = 187.0
+size_flags_horizontal = 0
+text = "Playable
+Demo!"
+label_settings = SubResource("LabelSettings_wqw13")
+horizontal_alignment = 1
 
 [node name="MC" type="MarginContainer" parent="." unique_id=667047710]
 layout_mode = 1

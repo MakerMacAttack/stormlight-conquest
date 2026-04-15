@@ -84,6 +84,17 @@ func updateAllLabels() -> void:
 		#print(theLabels[i])
 		theLabels[i].updateLabel()
 
+
+
+func reset() -> void:
+	# delete game
+	game = null
+	# double-check Start to make sure there's nothing else you have to clear out.
+		# disconnect all signals
+		# clear all properties
+	# transition back to start screen
+	GameManager.loadLandingScene()
+
 #new function to pan and zoom map
 func _unhandled_input(event: InputEvent) -> void:
 	

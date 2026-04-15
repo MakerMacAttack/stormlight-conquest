@@ -13,7 +13,21 @@ class_name Attack
 @onready var stop_button: Button = $vBoxContainer/stopButton
 
 
+var currentPlayer: Player # a setter to populate the first dropdown?
+var allRegions: Array[Region]
+var attackingRegions: Array[Region]
+var defendingRegions: Array[Region]
+var selectedAttacker: Region
+var selectedDefender: Region
+var attackForce: int # consider a setter that caps it at 3?
 
 
 func _on_stop_button_pressed() -> void:
 	SignalHub.onCombatEnd()
+
+
+func _on_attacker_selected(index: int) -> void:
+	if index > 0:
+		selectedAttacker = attackingRegions[index]
+		var neighbors = selectedAttacker.borders
+		var possibleDefenders = allRegions.filter(func(region): region.manualId in neighbors && region.currentOwner != currentPlayer)

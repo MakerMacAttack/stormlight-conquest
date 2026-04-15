@@ -85,6 +85,7 @@ layout_mode = 2
 layout_mode = 2
 text = "End Combat (for now...)"
 
+[connection signal="item_selected" from="vBoxContainer/hBoxContainer/vBoxContainer/selectAttacker" to="." method="_on_attacker_selected"]
 [connection signal="item_selected" from="vBoxContainer/hBoxContainer/vBoxContainer/selectAttacker" to="." method="_on_select_region_selected"]
 [connection signal="item_selected" from="vBoxContainer/hBoxContainer/vBoxContainer2/selectDefender" to="." method="_on_select_bonus_selected"]
 [connection signal="pressed" from="vBoxContainer/hBoxContainer2/attackButton" to="." method="_on_reinforce_button_pressed"]

@@ -8,6 +8,8 @@ signal refreshLabels
 signal endReinforce
 signal endCombat
 
+signal resetGame
+
 
 func onBeginPressed(numberOfPlayers, playerDetails) -> void:
 	gameBegin.emit(numberOfPlayers, playerDetails)
@@ -20,3 +22,6 @@ func onReinforcementBonusZero() -> void:
 
 func onCombatEnd() -> void:
 	endCombat.emit()
+
+func onRestart() -> void:
+	resetGame.emit()
