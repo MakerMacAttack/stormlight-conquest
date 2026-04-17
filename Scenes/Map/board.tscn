@@ -13,24 +13,22 @@ offset_bottom = 1536.0
 scale = Vector2(0.42, 0.42)
 texture = ExtResource("1_mjv7v")
 
-[node name="kingdomBonus" type="Label" parent="map" unique_id=1566235350]
-layout_mode = 0
-offset_left = 638.0953
-offset_top = 1361.9048
-offset_right = 1663.0952
-offset_bottom = 1514.9048
+[node name="kingdomBonus" type="Label" parent="." unique_id=1566235350]
+offset_left = 199.0
+offset_top = 562.0
+offset_right = 824.0
+offset_bottom = 663.0
 text = "Kingdom Bonuses:
 Alethkar: 8 Natanatan: 4 Thaylenah: 3 Herdaz: 4, Jah Keved: 6
 Sela Tales: 4, Azish Empire: 9, Shinovar: 2, Aimia: 2, Iri: 5"
 label_settings = ExtResource("3_7r5p4")
 horizontal_alignment = 1
 
-[node name="regionBonus" type="Label" parent="map" unique_id=589115628]
-layout_mode = 0
-offset_left = 21.428572
-offset_top = 1414.2858
-offset_right = 747.4286
-offset_bottom = 1515.2858
+[node name="regionBonus" type="Label" parent="." unique_id=589115628]
+offset_left = 18.0
+offset_top = 586.0
+offset_right = 255.0
+offset_bottom = 650.0
 text = "Get 1 troop for every
 4 regions, minimum 3"
 label_settings = ExtResource("3_7r5p4")

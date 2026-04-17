@@ -5,6 +5,7 @@ extends Control
 @onready var board: Board = $hBoxContainer/mapCards/subViewportContainer/subViewport/board
 @onready var actions_help: VBoxContainer = $hBoxContainer/actionsHelp
 @onready var player_name: Label = $hBoxContainer/mapCards/hBoxContainer/colorRect/vBoxContainer/playerName
+@onready var turn_order: Label = $hBoxContainer/actionsHelp/turnOrder/turnOrder
 
 
 const TROOP_DISPLAY = preload("res://Scenes/Troop Display/troopDisplay.tscn")
@@ -51,6 +52,11 @@ func onBegin(numberOfPlayers: int, playerDetails: Array) -> void:
 	player_select.queue_free()
 	# instantiate a game with the number of players and details
 	game = Game.new(numberOfPlayers, playerDetails)
+	var turnOrderArray: Array[String] = [game.currentPlayer.displayName]
+	for player in game.players:
+		turnOrderArray.append(player.displayName)
+	var turnOrderText: String = ("\n").join(turnOrderArray)
+	turn_order.text = turnOrderText
 	# set the region displays
 	for region in game.regions:
 		var createTroopDisplay: TroopDisplay = TROOP_DISPLAY.instantiate()
@@ -128,8 +134,8 @@ func reinforceEnd() -> void:
 			redeploymentPhase.fromOptions = donors
 			redeploymentPhase.allRegions = game.regions
 			redeploymentPhase.currentPlayer = game.currentPlayer
-		# else:
-			# launch turn over
+		else:
+			setNewTurnScreen()
 
 func combatEnd() -> void:
 	get_node(^"hBoxContainer/actionsHelp/Attack").queue_free() # this can't be the best way to do this.
@@ -147,8 +153,8 @@ func combatEnd() -> void:
 		redeploymentPhase.fromOptions = donors
 		redeploymentPhase.allRegions = game.regions
 		redeploymentPhase.currentPlayer = game.currentPlayer
-	# else:
-		# launch turn over
+	else:
+		setNewTurnScreen()
 
 func deploymentEnd() -> void:
 	get_node(^"hBoxContainer/actionsHelp/Redeployment").queue_free() # this can't be the best way to do this.
