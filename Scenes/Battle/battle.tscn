@@ -49,6 +49,33 @@ render_target_update_mode = 4
 [node name="board" parent="hBoxContainer/mapCards/subViewportContainer/subViewport" unique_id=727930261 instance=ExtResource("3_aqr0y")]
 scale = Vector2(0.9, 0.9)
 
+[node name="hBoxContainer" type="HBoxContainer" parent="hBoxContainer/mapCards" unique_id=1757378641]
+layout_mode = 2
+alignment = 2
+
+[node name="colorRect" type="ColorRect" parent="hBoxContainer/mapCards/hBoxContainer" unique_id=352981442]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(0, 0, 0, 1)
+
+[node name="vBoxContainer" type="VBoxContainer" parent="hBoxContainer/mapCards/hBoxContainer/colorRect" unique_id=1732893894]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="currentLabel" type="Label" parent="hBoxContainer/mapCards/hBoxContainer/colorRect/vBoxContainer" unique_id=2146074496]
+layout_mode = 2
+text = "The current player is:"
+horizontal_alignment = 1
+
+[node name="playerName" type="Label" parent="hBoxContainer/mapCards/hBoxContainer/colorRect/vBoxContainer" unique_id=415157245]
+layout_mode = 2
+horizontal_alignment = 1
+
 [node name="actionsHelp" type="VBoxContainer" parent="hBoxContainer" unique_id=443620087]
 custom_minimum_size = Vector2(360, 0)
 layout_mode = 2

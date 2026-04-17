@@ -43,7 +43,6 @@ func _on_reinforce_button_pressed() -> void:
 		selectedBonus = 0
 		select_bonus.select(0)
 		select_region.select(0)
-	SignalHub.onUpdateTroops()
 	if bonus == 0:
 		SignalHub.onReinforcementBonusZero()
 

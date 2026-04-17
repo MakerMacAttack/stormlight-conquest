@@ -13,6 +13,7 @@ var currentOwner: Player
 var troops: int:
 	set(value):
 		troops = value
+		SignalHub.onUpdateTroops()
 	get:
 		return troops
 var blades: int

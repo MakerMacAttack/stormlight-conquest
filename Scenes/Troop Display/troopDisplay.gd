@@ -31,3 +31,5 @@ func updateLabel() -> void:
 		localRegion.currentOwner.colorTheme.accessibilityCode,
 		localRegion.troops
 	]
+	troop_strength.label_settings.font_color = localRegion.currentOwner.colorTheme.hex
+	troop_strength.label_settings.outline_color = localRegion.currentOwner.colorTheme.stroke

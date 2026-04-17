@@ -4,10 +4,12 @@ extends Control
 @onready var player_select: PlayerSelect = $playerSelect
 @onready var board: Board = $hBoxContainer/mapCards/subViewportContainer/subViewport/board
 @onready var actions_help: VBoxContainer = $hBoxContainer/actionsHelp
+@onready var player_name: Label = $hBoxContainer/mapCards/hBoxContainer/colorRect/vBoxContainer/playerName
 
 
 const TROOP_DISPLAY = preload("res://Scenes/Troop Display/troopDisplay.tscn")
 const REINFORCEMENT = preload("res://Scenes/Reinforcement/reinforcement.tscn")
+const ATTACK = preload("res://Scenes/Attack/attack.tscn")
 
 
 var playerColors: Array[PlayerColor]
@@ -28,6 +30,7 @@ func _ready() -> void:
 	SignalHub.gameBegin.connect(onBegin)
 	SignalHub.refreshLabels.connect(updateAllLabels)
 	SignalHub.endReinforce.connect(reinforceEnd)
+	SignalHub.endCombat.connect(combatEnd)
 	for newColor in Constants.DEFAULT_COLORS:
 		if newColor.displayName != "Neutral":
 			playerColors.append(PlayerColor.new(newColor))
@@ -46,7 +49,7 @@ func onBegin(numberOfPlayers: int, playerDetails: Array) -> void:
 	for region in game.regions:
 		var createTroopDisplay: TroopDisplay = TROOP_DISPLAY.instantiate()
 		createTroopDisplay.setLocalRegion(region)
-		print(createTroopDisplay.localRegion)
+		#print(createTroopDisplay.localRegion)
 		createTroopDisplay.set_position(region.spawnPoint)
 		board.displayTroopStrength(createTroopDisplay)
 		createTroopDisplay.setTroopStrength(region.currentOwner.colorTheme.accessibilityCode, 3)
@@ -59,23 +62,53 @@ func onBegin(numberOfPlayers: int, playerDetails: Array) -> void:
 	var attachReinforcement: Reinforcement = REINFORCEMENT.instantiate()
 	attachReinforcement.custom_minimum_size = Vector2(0,400)
 	actions_help.add_child(attachReinforcement)
-	actions_help.set
+	#actions_help.set
 	var currentPlayerRegions = game.regions.filter(filterRegions)
 	attachReinforcement.territories = currentPlayerRegions
 	attachReinforcement.bonus = 3
 	# generate the various troop strength displays
 	# figure out turn order
 	# figure out the code to make the game proceed through the actions of a turn.
+	player_name.text = game.currentPlayer.displayName
+	var currentSettings = LabelSettings.new()
+	currentSettings.font_color = game.currentPlayer.colorTheme.hex
+	currentSettings.outline_color = game.currentPlayer.colorTheme.stroke
+	currentSettings.outline_size = 5
+	player_name.label_settings = currentSettings
 
 func reinforceEnd() -> void:
 	get_node(^"hBoxContainer/actionsHelp/Reinforcement").queue_free() # this can't be the best way to do this.
 	# get every region owned by the current owner
 	# Because we just reinforced, it's impossible to have none with >1 troop
 	# Narrow to the ones with >1 troop
+	var possibleAttackers: Array[Region]
+	for region in game.regions:
+		if region.currentOwner == game.currentPlayer && region.troops > 1:
+			possibleAttackers.append(region)
 	# Make a collective Set of all neighbors from all regions
+	#print(canAttack)
+	var canAttack: Array[Region]
+	for aggressor in possibleAttackers:
+		var hasFoe: bool = false
+		for region in game.regions:
+			if aggressor.borders.has(region.manualId) && region.currentOwner != game.currentPlayer:
+				hasFoe = true
+				break
+		if hasFoe:
+			canAttack.append(aggressor)
 	# Get all those regions
 	# If at least one is owned by a foe, advance to Combat Phase
+	if canAttack.size() > 0:
+		var attackPhase: Attack = ATTACK.instantiate()
+		attackPhase.custom_minimum_size = Vector2(0,400)
+		actions_help.add_child(attackPhase)
+		attackPhase.currentPlayer = game.currentPlayer
+		attackPhase.allRegions = game.regions # double-check you don't need to append these one by one
+		attackPhase.attackingRegions = canAttack
 	# Else, advance to Redeployment Phase
+
+func combatEnd() -> void:
+	get_node(^"hBoxContainer/actionsHelp/Attack").queue_free() # this can't be the best way to do this.
 
 func updateAllLabels() -> void:
 	var theMap = board.get_child(0)
@@ -101,35 +134,35 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
 			zoom = clamp(zoom + zoom_speed, defaultZoom, maxZoom)
-			print("zoom: ",zoom)
+			#print("zoom: ",zoom)
 			#zooming in on map will adjust pan so that the focus stays centered (more or less) by adjusting x and y position when the zoom changes
 			if zoom != prevZoom: board.position.x = clamp(board.position.x*(zoomScaling), maxValueX*(zoom-defaultZoom)/defaultZoom, 0)
-			print("x: ",board.position.x)
+			#print("x: ",board.position.x)
 			if zoom != prevZoom: board.position.y = clamp(board.position.y*(zoomScaling), maxValueY*(zoom-defaultZoom)/defaultZoom, 0)
-			print("y: ",board.position.y)
+			#print("y: ",board.position.y)
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
 			zoom = clamp(zoom - zoom_speed, defaultZoom, maxZoom)
-			print("zoom: ",zoom)
+			#print("zoom: ",zoom)
 			board.position.x = clamp(board.position.x*(1/zoomScaling), maxValueX*(zoom-defaultZoom)/defaultZoom, 0)
-			print("x: ",board.position.x)
+			#print("x: ",board.position.x)
 			board.position.y = clamp(board.position.y*(1/zoomScaling), maxValueY*(zoom-defaultZoom)/defaultZoom, 0)
-			print("y: ",board.position.y)
+			#print("y: ",board.position.y)
 		prevZoom = zoom
 		board.scale = Vector2(zoom, zoom)
 
 	#zooming in on map will adjust maximum x and y positions and increase scroll speed
 	if event.is_action_pressed("ui_left", true):
 		board.position.x = clamp(board.position.x + scrollSpeed*zoom, maxValueX*(zoom-defaultZoom)/defaultZoom, 0)
-		print(board.position.x)
+		#print(board.position.x)
 	if event.is_action_pressed("ui_right", true):
 		board.position.x = clamp(board.position.x - scrollSpeed*zoom, maxValueX*(zoom-defaultZoom)/defaultZoom, 0)
-		print(board.position.x)
+		#print(board.position.x)
 	if event.is_action_pressed("ui_up", true):
 		board.position.y = clamp(board.position.y + scrollSpeed*zoom, maxValueY*(zoom-defaultZoom)/defaultZoom, 0)
-		print(board.position.y)
+		#print(board.position.y)
 	if event.is_action_pressed("ui_down", true):
 		board.position.y = clamp(board.position.y - scrollSpeed*zoom, maxValueY*(zoom-defaultZoom)/defaultZoom, 0)
-		print(board.position.y)
+		#print(board.position.y)
 
 func filterRegions(checkRegion: Region) -> bool:
 	return checkRegion.currentOwner == game.currentPlayer
