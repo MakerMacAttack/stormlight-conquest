@@ -10,6 +10,8 @@ extends Control
 const TROOP_DISPLAY = preload("res://Scenes/Troop Display/troopDisplay.tscn")
 const REINFORCEMENT = preload("res://Scenes/Reinforcement/reinforcement.tscn")
 const ATTACK = preload("res://Scenes/Attack/attack.tscn")
+const REDEPLOYMENT = preload("res://Scenes/Redeployment/redeployment.tscn")
+const TURN_CHANGE = preload("res://Scenes/TurnChange/turnChange.tscn")
 
 
 var playerColors: Array[PlayerColor]
@@ -25,12 +27,16 @@ var scrollSpeed: float = 25
 var maxValueX: int = -775
 var maxValueY: int = -580
 var zoomScaling: float = 1.09
+var pity: int = 3
+var regionsPerBonus: int = 4
 
 func _ready() -> void:
 	SignalHub.gameBegin.connect(onBegin)
 	SignalHub.refreshLabels.connect(updateAllLabels)
 	SignalHub.endReinforce.connect(reinforceEnd)
 	SignalHub.endCombat.connect(combatEnd)
+	SignalHub.endDeployment.connect(deploymentEnd)
+	SignalHub.newTurn.connect(endNextTurn)
 	for newColor in Constants.DEFAULT_COLORS:
 		if newColor.displayName != "Neutral":
 			playerColors.append(PlayerColor.new(newColor))
@@ -106,9 +112,48 @@ func reinforceEnd() -> void:
 		attackPhase.allRegions = game.regions # double-check you don't need to append these one by one
 		attackPhase.attackingRegions = canAttack
 	# Else, advance to Redeployment Phase
+	else:
+		var donors: Array[Region]
+		for donor in game.regions:
+			if donor.currentOwner == game.currentPlayer && donor.troops > 1:
+				for region in game.regions:
+					if donor.borders.has(region.manualId) && region.currentOwner == game.currentPlayer:
+						donors.append(donor)
+						break
+		# it isn't possible here for there to be no donors but I should write the code anyway.
+		if donors.size() > 0:
+			var redeploymentPhase: Redeployment = REDEPLOYMENT.instantiate()
+			redeploymentPhase.custom_minimum_size = Vector2(0,400)
+			actions_help.add_child(redeploymentPhase)
+			redeploymentPhase.fromOptions = donors
+			redeploymentPhase.allRegions = game.regions
+			redeploymentPhase.currentPlayer = game.currentPlayer
+		# else:
+			# launch turn over
 
 func combatEnd() -> void:
 	get_node(^"hBoxContainer/actionsHelp/Attack").queue_free() # this can't be the best way to do this.
+	var donors: Array[Region]
+	for donor in game.regions:
+		if donor.currentOwner == game.currentPlayer && donor.troops > 1:
+			for region in game.regions:
+				if donor.borders.has(region.manualId) && region.currentOwner == game.currentPlayer:
+					donors.append(donor)
+					break
+	if donors.size() > 0:
+		var redeploymentPhase: Redeployment = REDEPLOYMENT.instantiate()
+		redeploymentPhase.custom_minimum_size = Vector2(0,400)
+		actions_help.add_child(redeploymentPhase)
+		redeploymentPhase.fromOptions = donors
+		redeploymentPhase.allRegions = game.regions
+		redeploymentPhase.currentPlayer = game.currentPlayer
+	# else:
+		# launch turn over
+
+func deploymentEnd() -> void:
+	get_node(^"hBoxContainer/actionsHelp/Redeployment").queue_free() # this can't be the best way to do this.
+	# put up the End of Round screen
+	setNewTurnScreen()
 
 func updateAllLabels() -> void:
 	var theMap = board.get_child(0)
@@ -117,7 +162,66 @@ func updateAllLabels() -> void:
 		#print(theLabels[i])
 		theLabels[i].updateLabel()
 
+func setNewTurnScreen() -> void:
+	var turnChangePhase: TurnChange = TURN_CHANGE.instantiate()
+	add_child(turnChangePhase) # here is what I need to fix, need to add this scene to Battle
+	game.advancePlayer()
+	turnChangePhase.nextPlayer = game.currentPlayer
 
+func endNextTurn() -> void:
+	get_node(^"turnChange").queue_free() # This is getting root/Battle/turnChange, so I'm addingit wrong
+	
+	# abstract all this to a function I can just call
+	player_name.text = game.currentPlayer.displayName
+	var currentSettings = LabelSettings.new()
+	currentSettings.font_color = game.currentPlayer.colorTheme.hex
+	currentSettings.outline_color = game.currentPlayer.colorTheme.stroke
+	currentSettings.outline_size = 5
+	player_name.label_settings = currentSettings
+	setReinforcementScreen()
+
+func calculateBonus() -> int:
+	var bonus: int = 0
+	#calculate region bonus
+	var ownedRegions: Array[Region] = []
+	for region in game.regions:
+		if region.currentOwner == game.currentPlayer:
+			ownedRegions.append(region)
+	bonus = int(ownedRegions.size()) / regionsPerBonus
+	print("Calculated bonus for regions: %d" % [bonus])
+	if bonus < pity:
+		bonus = pity
+	#calculate kingdom bonus
+	var kingdomBonus: int = 0
+	for kingdom in Constants.DEFAULT_KINGDOMS:
+		var regionsInKingdom: Array[Region] = []
+		for region in game.regions:
+			if kingdom.regions.has(region.manualId):
+				regionsInKingdom.append(region)
+		var getBonus: bool = true
+		for localRegion in regionsInKingdom:
+			if localRegion.currentOwner != game.currentPlayer:
+				getBonus = false
+				break
+		if getBonus:
+			print("For owning %s, get %d bonus." % [kingdom.displayName, kingdom.bonus])
+			kingdomBonus += kingdom.bonus
+	print("%d from regions and %d from kingdoms." % [bonus, kingdomBonus])
+	return bonus + kingdomBonus
+
+func setReinforcementScreen() -> void:
+	pass
+	# launch reinforcement screen
+	var newReinforcementPhase: Reinforcement = REINFORCEMENT.instantiate()
+	newReinforcementPhase.custom_minimum_size = Vector2(0,400)
+	actions_help.add_child(newReinforcementPhase)
+	#actions_help.set
+	var currentPlayerRegions = game.regions.filter(filterRegions)
+	newReinforcementPhase.territories = currentPlayerRegions
+	# get bonus
+	var bonus = calculateBonus()
+	# set bonus
+	newReinforcementPhase.bonus = bonus
 
 func reset() -> void:
 	# delete game

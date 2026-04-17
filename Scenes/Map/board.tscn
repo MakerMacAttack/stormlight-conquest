@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bie76buvh7s3w" path="res://Assets/Battle Map.png" id="1_mjv7v"]
 [ext_resource type="Script" uid="uid://blfb25wdlvoi7" path="res://Scenes/Map/board.gd" id="1_nqbwy"]
+[ext_resource type="LabelSettings" uid="uid://cpttctxuf1yq2" path="res://Assets/Fonts/rules.tres" id="3_7r5p4"]
 
 [node name="board" type="Node2D" unique_id=727930261]
 script = ExtResource("1_nqbwy")
@@ -11,3 +12,25 @@ offset_right = 2048.0
 offset_bottom = 1536.0
 scale = Vector2(0.42, 0.42)
 texture = ExtResource("1_mjv7v")
+
+[node name="kingdomBonus" type="Label" parent="map" unique_id=1566235350]
+layout_mode = 0
+offset_left = 638.0953
+offset_top = 1361.9048
+offset_right = 1663.0952
+offset_bottom = 1514.9048
+text = "Kingdom Bonuses:
+Alethkar: 8 Natanatan: 4 Thaylenah: 3 Herdaz: 4, Jah Keved: 6
+Sela Tales: 4, Azish Empire: 9, Shinovar: 2, Aimia: 2, Iri: 5"
+label_settings = ExtResource("3_7r5p4")
+horizontal_alignment = 1
+
+[node name="regionBonus" type="Label" parent="map" unique_id=589115628]
+layout_mode = 0
+offset_left = 21.428572
+offset_top = 1414.2858
+offset_right = 747.4286
+offset_bottom = 1515.2858
+text = "Get 1 troop for every
+4 regions, minimum 3"
+label_settings = ExtResource("3_7r5p4")

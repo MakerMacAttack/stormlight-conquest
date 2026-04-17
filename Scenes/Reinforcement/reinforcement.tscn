@@ -35,7 +35,7 @@ layout_mode = 2
 
 [node name="labelRegion" type="Label" parent="vBoxContainer/hBoxContainer/vBoxContainer" unique_id=446031492]
 layout_mode = 2
-text = "Kingdom"
+text = "Region"
 horizontal_alignment = 1
 
 [node name="selectRegion" type="OptionButton" parent="vBoxContainer/hBoxContainer/vBoxContainer" unique_id=1816534065]

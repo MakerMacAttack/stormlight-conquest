@@ -7,6 +7,8 @@ signal refreshLabels
 
 signal endReinforce
 signal endCombat
+signal endDeployment
+signal newTurn
 
 signal gameWon
 signal resetGame
@@ -23,6 +25,12 @@ func onReinforcementBonusZero() -> void:
 
 func onCombatEnd() -> void:
 	endCombat.emit()
+
+func onRedeploymentEnd() -> void:
+	endDeployment.emit()
+
+func onStartNewTurn() -> void:
+	newTurn.emit()
 
 func onVictory() -> void:
 	gameWon.emit()

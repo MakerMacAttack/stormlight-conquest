@@ -54,11 +54,12 @@ var attackForce: int:
 		attackForce = force
 		checkCanCombat()
 var advancingTroops: int
+var minimumAdvance: int
 
 func autoBattle(attacker: int, defender: int) -> Dictionary:
 	var attackerForce = attacker
 	var defenderForce = defender
-	while (attackerForce > 4) || (defenderForce > 0):
+	while (attackerForce > 4) && (defenderForce > 1):
 		var result = battle(clamp(attackerForce, 0, 3), clamp(defenderForce, 0, 2))
 		attackerForce -= result.attackerLosses
 		defenderForce -= result.defenderLosses
@@ -119,9 +120,13 @@ func checkCanCombat() -> void:
 func setAdvance(lowest: int, highest:int) -> void:
 	select_advance.clear()
 	select_advance.add_item("-")
+	minimumAdvance = lowest - 1
+	#print("Lowest: %d. Highest: %d. Minimum: %d." % [lowest, highest, minimumAdvance])
 	if highest >= lowest:
 		for i in range(lowest, highest + 1):
 			select_advance.add_item(str(i))
+	else:
+		select_advance.add_item(str(lowest))
 
 func _on_defender_selected(index: int) -> void:
 	if index > 0:
@@ -152,35 +157,39 @@ func _on_attack_button_pressed() -> void:
 			select_force.select(forceOptions)
 			attackForce = forceOptions
 	# Check for conquering
-	if selectedDefender.troops < 1:
-		selectedDefender.currentOwner = currentPlayer
-		var victory: bool = true
-		for region in allRegions:
-			if region.currentOwner != currentPlayer:
-				victory = false
-				break
-		if victory:
-			SignalHub.onVictory()
-		else:
-			setAdvance(attackForce - result.attackerLosses, selectedAttacker.troops -1)
-			attack_button.disabled = true
-			auto_attack_button.disabled = true
-			conquered.visible = true
+		if selectedDefender.troops < 1: #somehow selected defender was missing when the code got here
+			stop_button.disabled = true
+			selectedDefender.currentOwner = currentPlayer
+			var victory: bool = true
+			for region in allRegions:
+				if region.currentOwner != currentPlayer:
+					victory = false
+					break
+			if victory:
+				SignalHub.onVictory()
+			else:
+				setAdvance(attackForce - result.attackerLosses, selectedAttacker.troops -1)
+				attack_button.disabled = true
+				auto_attack_button.disabled = true
+				conquered.visible = true
 
 
 func _on_advance_selected(index: int) -> void:
+	#print("Index: %d. Minimum: %d." % [index, minimumAdvance])
 	if index > 0:
-		advancingTroops = index
+		advancingTroops = index + minimumAdvance
 		advance_button.disabled = false
 
 
 func _on_advance_button_pressed() -> void:
+	print("Attacker's troops: %d. Amount to move: %d." % [selectedAttacker.troops, advancingTroops])
 	selectedAttacker.troops -= advancingTroops
 	selectedDefender.troops += advancingTroops
 	advance_button.disabled = true
 	conquered.visible = false
 	select_advance.clear()
 	resetAttacker()
+	stop_button.disabled = false
 
 func resetAttacker() -> void:
 	selectedAttacker = null

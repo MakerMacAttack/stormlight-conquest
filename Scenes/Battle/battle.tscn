@@ -5,6 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://uniblpxc1lmn" path="res://Scenes/Map/board.tscn" id="3_aqr0y"]
 [ext_resource type="PackedScene" uid="uid://cpwy6t0qj4qfm" path="res://Scenes/Player Select/playerSelect.tscn" id="5_o8bsx"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_wqxgi"]
+font_size = 19
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Battle" type="Control" unique_id=1659408509]
 layout_mode = 3
 anchors_preset = 15
@@ -82,3 +87,13 @@ layout_mode = 2
 
 [node name="playerSelect" parent="." unique_id=643937382 instance=ExtResource("5_o8bsx")]
 layout_mode = 1
+
+[node name="label" type="Label" parent="." unique_id=2116883003]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 583.0
+offset_right = 324.0
+offset_bottom = 640.0
+text = "Feedback? Questions?
+StormlightConquest@gmail.com"
+label_settings = SubResource("LabelSettings_wqxgi")

@@ -26,7 +26,11 @@ func _init(numberOfPlayers: int, playerDetails: Array) -> void:
 		regions.append(newRegion)
 	# make a deck
 	players.shuffle()
-	currentPlayer = players[0]
+	currentPlayer = players.pop_front()
+
+func advancePlayer() -> void:
+	players.append(currentPlayer)
+	currentPlayer = players.pop_front()
 
 func autoBattle(attacker: int, defender: int) -> Dictionary:
 	var attackerForce = attacker
