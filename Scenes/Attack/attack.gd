@@ -59,7 +59,7 @@ var minimumAdvance: int
 func autoBattle(attacker: int, defender: int) -> Dictionary:
 	var attackerForce = attacker
 	var defenderForce = defender
-	while (attackerForce > 4) && (defenderForce > 1):
+	while (attackerForce > 4) && (defenderForce > 2):
 		var result = battle(clamp(attackerForce, 0, 3), clamp(defenderForce, 0, 2))
 		attackerForce -= result.attackerLosses
 		defenderForce -= result.defenderLosses

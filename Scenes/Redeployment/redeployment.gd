@@ -83,3 +83,7 @@ func _on_deploy_pressed() -> void:
 	selectedFrom.troops -= selectedAmount
 	selectedTo.troops += selectedAmount
 	SignalHub.onRedeploymentEnd()
+
+
+func _on_skip_pressed() -> void:
+	SignalHub.onRedeploymentEnd()

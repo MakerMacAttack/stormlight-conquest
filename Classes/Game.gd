@@ -9,6 +9,7 @@ var players: Array[Player] = []
 #var round: int = 1
 var currentPlayer: Player
 var regions: Array[Region] = []
+var advancePlayerTerminal: int = 0
 
 
 func _init(numberOfPlayers: int, playerDetails: Array) -> void:
@@ -29,8 +30,12 @@ func _init(numberOfPlayers: int, playerDetails: Array) -> void:
 	currentPlayer = players.pop_front()
 
 func advancePlayer() -> void:
+	# check for terminal case, if so, go to Game Over
 	players.append(currentPlayer)
 	currentPlayer = players.pop_front()
+	# loop through regions, if none of them are owned by current player:
+	# advance terminal, advancePlayer again.
+	# else, reset terminal to 0
 
 func autoBattle(attacker: int, defender: int) -> Dictionary:
 	var attackerForce = attacker

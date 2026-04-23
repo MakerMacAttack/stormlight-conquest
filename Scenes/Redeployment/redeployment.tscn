@@ -63,7 +63,12 @@ layout_mode = 2
 disabled = true
 text = "Deploy"
 
+[node name="skipButton" type="Button" parent="vBoxContainer" unique_id=1562546419]
+layout_mode = 2
+text = "Skip"
+
 [connection signal="item_selected" from="vBoxContainer/hBoxContainer/fromContainer/selectFrom" to="." method="_on_from_selected"]
 [connection signal="item_selected" from="vBoxContainer/hBoxContainer/toContainer/selectTo" to="." method="_on_to_selected"]
 [connection signal="item_selected" from="vBoxContainer/hBoxContainer/amountContainer/selectAmount" to="." method="_on_amount_selected"]
 [connection signal="pressed" from="vBoxContainer/deployButton" to="." method="_on_deploy_pressed"]
+[connection signal="pressed" from="vBoxContainer/skipButton" to="." method="_on_skip_pressed"]
