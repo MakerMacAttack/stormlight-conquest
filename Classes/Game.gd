@@ -31,11 +31,23 @@ func _init(numberOfPlayers: int, playerDetails: Array) -> void:
 
 func advancePlayer() -> void:
 	# check for terminal case, if so, go to Game Over
+	if advancePlayerTerminal > players.size():
+		SignalHub.onVictory()
 	players.append(currentPlayer)
 	currentPlayer = players.pop_front()
 	# loop through regions, if none of them are owned by current player:
+	var hasRegions: bool = false
+	for region in regions:
+		if region.currentOwner == currentPlayer:
+			hasRegions = true
+			break
 	# advance terminal, advancePlayer again.
+	if !hasRegions:
+		advancePlayerTerminal += 1
+		advancePlayer()
 	# else, reset terminal to 0
+	else:
+		advancePlayerTerminal = 0
 
 func autoBattle(attacker: int, defender: int) -> Dictionary:
 	var attackerForce = attacker

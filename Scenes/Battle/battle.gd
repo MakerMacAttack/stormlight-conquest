@@ -129,7 +129,8 @@ func reinforceEnd() -> void:
 		# it isn't possible here for there to be no donors but I should write the code anyway.
 		if donors.size() > 0:
 			var redeploymentPhase: Redeployment = REDEPLOYMENT.instantiate()
-			redeploymentPhase.custom_minimum_size = Vector2(0,400)
+			redeploymentPhase.custom_minimum_size = Vector2(0,380)
+			redeploymentPhase.position = Vector2(-20,0)
 			actions_help.add_child(redeploymentPhase)
 			redeploymentPhase.fromOptions = donors
 			redeploymentPhase.allRegions = game.regions
@@ -148,7 +149,8 @@ func combatEnd() -> void:
 					break
 	if donors.size() > 0:
 		var redeploymentPhase: Redeployment = REDEPLOYMENT.instantiate()
-		redeploymentPhase.custom_minimum_size = Vector2(0,400)
+		redeploymentPhase.custom_minimum_size = Vector2(0,380)
+		redeploymentPhase.position = Vector2(-20,0)
 		actions_help.add_child(redeploymentPhase)
 		redeploymentPhase.fromOptions = donors
 		redeploymentPhase.allRegions = game.regions
