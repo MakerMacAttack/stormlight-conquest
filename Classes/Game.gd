@@ -5,11 +5,37 @@ class_name Game
 
 
 #var deck: Deck = Deck.new() # it doesn't feel like I'm doing this right
-const players: Array[Player] = []
-var round: int = 1
+var players: Array[Player] = []
+#var round: int = 1
 var currentPlayer: Player
-const regions: Array[Region] = []
+var regions: Array[Region] = []
+var advancePlayerTerminal: int = 0
 
+
+func _init(numberOfPlayers: int, playerDetails: Array) -> void:
+	for i in numberOfPlayers:
+		var thisPlayer = Player.new(playerDetails[i][0], PlayerColor.new(Constants.DEFAULT_COLORS[playerDetails[i][1]]))
+		players.append(thisPlayer)
+	# make a new array copying the default regions and then shuffle
+	var thisRegions = []
+	for region in Constants.DEFAULT_REGIONS:
+		thisRegions.append(region)
+	thisRegions.shuffle()
+	# assign each region to a player
+	for i in thisRegions.size():
+		var newRegion: Region = Region.new(thisRegions[i], players[i % numberOfPlayers])
+		regions.append(newRegion)
+	# make a deck
+	players.shuffle()
+	currentPlayer = players.pop_front()
+
+func advancePlayer() -> void:
+	# check for terminal case, if so, go to Game Over
+	players.append(currentPlayer)
+	currentPlayer = players.pop_front()
+	# loop through regions, if none of them are owned by current player:
+	# advance terminal, advancePlayer again.
+	# else, reset terminal to 0
 
 func autoBattle(attacker: int, defender: int) -> Dictionary:
 	var attackerForce = attacker

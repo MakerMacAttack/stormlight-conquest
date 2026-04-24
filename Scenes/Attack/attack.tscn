@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://bgw3d1eobso17"]
+
+[ext_resource type="Script" uid="uid://bj7vj2i74pmva" path="res://Scenes/Attack/attack.gd" id="1_vtts5"]
+
+[node name="Attack" type="Control" unique_id=2130148275]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -772.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vtts5")
+
+[node name="vBoxContainer" type="VBoxContainer" parent="." unique_id=1559197182]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="label" type="Label" parent="vBoxContainer" unique_id=1123745130]
+layout_mode = 2
+text = "Combat Phase"
+horizontal_alignment = 1
+
+[node name="hBoxContainer" type="HBoxContainer" parent="vBoxContainer" unique_id=615500771]
+layout_mode = 2
+alignment = 1
+
+[node name="vBoxContainer" type="VBoxContainer" parent="vBoxContainer/hBoxContainer" unique_id=1657116318]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="labelAttacker" type="Label" parent="vBoxContainer/hBoxContainer/vBoxContainer" unique_id=446031492]
+layout_mode = 2
+text = "Attacker"
+horizontal_alignment = 1
+
+[node name="selectAttacker" type="OptionButton" parent="vBoxContainer/hBoxContainer/vBoxContainer" unique_id=1816534065]
+layout_mode = 2
+
+[node name="vBoxContainer2" type="VBoxContainer" parent="vBoxContainer/hBoxContainer" unique_id=524913664]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="labelDefender" type="Label" parent="vBoxContainer/hBoxContainer/vBoxContainer2" unique_id=2033751826]
+layout_mode = 2
+text = "Defender"
+horizontal_alignment = 1
+
+[node name="selectDefender" type="OptionButton" parent="vBoxContainer/hBoxContainer/vBoxContainer2" unique_id=1126309308]
+layout_mode = 2
+
+[node name="vBoxContainer3" type="VBoxContainer" parent="vBoxContainer/hBoxContainer" unique_id=261629578]
+layout_mode = 2
+
+[node name="labelTroops" type="Label" parent="vBoxContainer/hBoxContainer/vBoxContainer3" unique_id=113598416]
+layout_mode = 2
+text = "How many?"
+
+[node name="selectForce" type="OptionButton" parent="vBoxContainer/hBoxContainer/vBoxContainer3" unique_id=501316047]
+layout_mode = 2
+
+[node name="hBoxContainer2" type="HBoxContainer" parent="vBoxContainer" unique_id=2061191900]
+layout_mode = 2
+alignment = 1
+
+[node name="attackButton" type="Button" parent="vBoxContainer/hBoxContainer2" unique_id=1084065822]
+layout_mode = 2
+disabled = true
+text = "ATTACK!"
+
+[node name="autoAttackButton" type="Button" parent="vBoxContainer/hBoxContainer2" unique_id=1757608601]
+layout_mode = 2
+disabled = true
+text = "Auto-Battle"
+
+[node name="combatResults" type="Label" parent="vBoxContainer" unique_id=40911352]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="conquered" type="HBoxContainer" parent="vBoxContainer" unique_id=1996369372]
+visible = false
+layout_mode = 2
+
+[node name="conqueredLabel" type="Label" parent="vBoxContainer/conquered" unique_id=359684706]
+layout_mode = 2
+text = "How many troops to advance?"
+
+[node name="selectAdvance" type="OptionButton" parent="vBoxContainer/conquered" unique_id=1274485604]
+layout_mode = 2
+
+[node name="advanceButton" type="Button" parent="vBoxContainer/conquered" unique_id=446633217]
+layout_mode = 2
+disabled = true
+text = "Go!"
+
+[node name="control" type="Control" parent="vBoxContainer" unique_id=1127365903]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="stopButton" type="Button" parent="vBoxContainer" unique_id=1360049446]
+layout_mode = 2
+text = "End Combat (for now...)"
+
+[connection signal="item_selected" from="vBoxContainer/hBoxContainer/vBoxContainer/selectAttacker" to="." method="_on_attacker_selected"]
+[connection signal="item_selected" from="vBoxContainer/hBoxContainer/vBoxContainer2/selectDefender" to="." method="_on_defender_selected"]
+[connection signal="item_selected" from="vBoxContainer/hBoxContainer/vBoxContainer3/selectForce" to="." method="_on_force_selected"]
+[connection signal="pressed" from="vBoxContainer/hBoxContainer2/attackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="vBoxContainer/hBoxContainer2/autoAttackButton" to="." method="_on_auto_attack_pressed"]
+[connection signal="item_selected" from="vBoxContainer/conquered/selectAdvance" to="." method="_on_advance_selected"]
+[connection signal="pressed" from="vBoxContainer/conquered/advanceButton" to="." method="_on_advance_button_pressed"]
+[connection signal="pressed" from="vBoxContainer/stopButton" to="." method="_on_stop_pressed"]

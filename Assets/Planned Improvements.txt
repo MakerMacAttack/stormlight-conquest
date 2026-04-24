@@ -1,0 +1,17 @@
+Multiplayer
+Login
+Game persists between sessions
+Shardblades
+Shardplate
+Oathgates
+Soulcasters (generate food which gives free reinforcements)
+Teams
+Come up with some idea for Knights/Oaths
+Players can be humans or singers?
+Alternate Silver Kingdoms map
+Disable colors already chosen
+Data persists on player select screen if you change number of players
+Random or chosen turn order
+Choose rules for turning in cards
+Choose redeployment options (adjacent, chained, unlimited)
+Begin button doesn't have to be the full width

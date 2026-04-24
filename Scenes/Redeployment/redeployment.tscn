@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://d0c51f6l33yw4"]
+
+[ext_resource type="Script" uid="uid://dhowqcmywxgvu" path="res://Scenes/Redeployment/redeployment.gd" id="1_vp86m"]
+
+[node name="Redeployment" type="Control" unique_id=1442360531]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -772.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vp86m")
+
+[node name="vBoxContainer" type="VBoxContainer" parent="." unique_id=1637670832]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="redeploymentLabel" type="Label" parent="vBoxContainer" unique_id=177223592]
+layout_mode = 2
+text = "Redeployment"
+horizontal_alignment = 1
+
+[node name="hBoxContainer" type="HBoxContainer" parent="vBoxContainer" unique_id=1812142464]
+layout_mode = 2
+
+[node name="fromContainer" type="VBoxContainer" parent="vBoxContainer/hBoxContainer" unique_id=19688773]
+layout_mode = 2
+
+[node name="fromLabel" type="Label" parent="vBoxContainer/hBoxContainer/fromContainer" unique_id=502348929]
+layout_mode = 2
+text = "From"
+horizontal_alignment = 1
+
+[node name="selectFrom" type="OptionButton" parent="vBoxContainer/hBoxContainer/fromContainer" unique_id=951646276]
+layout_mode = 2
+
+[node name="toContainer" type="VBoxContainer" parent="vBoxContainer/hBoxContainer" unique_id=554389143]
+layout_mode = 2
+
+[node name="toLabel" type="Label" parent="vBoxContainer/hBoxContainer/toContainer" unique_id=1375758580]
+layout_mode = 2
+text = "To"
+horizontal_alignment = 1
+
+[node name="selectTo" type="OptionButton" parent="vBoxContainer/hBoxContainer/toContainer" unique_id=1539535843]
+layout_mode = 2
+
+[node name="amountContainer" type="VBoxContainer" parent="vBoxContainer/hBoxContainer" unique_id=1680412366]
+layout_mode = 2
+
+[node name="amountLabel" type="Label" parent="vBoxContainer/hBoxContainer/amountContainer" unique_id=1706564107]
+layout_mode = 2
+text = "How Many?"
+horizontal_alignment = 1
+
+[node name="selectAmount" type="OptionButton" parent="vBoxContainer/hBoxContainer/amountContainer" unique_id=422885813]
+layout_mode = 2
+
+[node name="deployButton" type="Button" parent="vBoxContainer" unique_id=420368870]
+layout_mode = 2
+disabled = true
+text = "Deploy"
+
+[node name="skipButton" type="Button" parent="vBoxContainer" unique_id=1562546419]
+layout_mode = 2
+text = "Skip"
+
+[connection signal="item_selected" from="vBoxContainer/hBoxContainer/fromContainer/selectFrom" to="." method="_on_from_selected"]
+[connection signal="item_selected" from="vBoxContainer/hBoxContainer/toContainer/selectTo" to="." method="_on_to_selected"]
+[connection signal="item_selected" from="vBoxContainer/hBoxContainer/amountContainer/selectAmount" to="." method="_on_amount_selected"]
+[connection signal="pressed" from="vBoxContainer/deployButton" to="." method="_on_deploy_pressed"]
+[connection signal="pressed" from="vBoxContainer/skipButton" to="." method="_on_skip_pressed"]

@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cv8xwkrhqgxfv"]
+
+[ext_resource type="Script" uid="uid://pi537flkelmf" path="res://Scenes/Reinforcement/reinforcement.gd" id="1_2028s"]
+
+[node name="Reinforcement" type="Control" unique_id=2130148275]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -772.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2028s")
+
+[node name="vBoxContainer" type="VBoxContainer" parent="." unique_id=1559197182]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="label" type="Label" parent="vBoxContainer" unique_id=1123745130]
+layout_mode = 2
+text = "Reinforcement Phase"
+horizontal_alignment = 1
+
+[node name="hBoxContainer" type="HBoxContainer" parent="vBoxContainer" unique_id=615500771]
+layout_mode = 2
+alignment = 1
+
+[node name="vBoxContainer" type="VBoxContainer" parent="vBoxContainer/hBoxContainer" unique_id=1657116318]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="labelRegion" type="Label" parent="vBoxContainer/hBoxContainer/vBoxContainer" unique_id=446031492]
+layout_mode = 2
+text = "Region"
+horizontal_alignment = 1
+
+[node name="selectRegion" type="OptionButton" parent="vBoxContainer/hBoxContainer/vBoxContainer" unique_id=1816534065]
+layout_mode = 2
+
+[node name="vBoxContainer2" type="VBoxContainer" parent="vBoxContainer/hBoxContainer" unique_id=524913664]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="labelTroops" type="Label" parent="vBoxContainer/hBoxContainer/vBoxContainer2" unique_id=2033751826]
+layout_mode = 2
+text = "Troops"
+horizontal_alignment = 1
+
+[node name="selectBonus" type="OptionButton" parent="vBoxContainer/hBoxContainer/vBoxContainer2" unique_id=1126309308]
+layout_mode = 2
+
+[node name="reinforceButton" type="Button" parent="vBoxContainer" unique_id=1084065822]
+layout_mode = 2
+disabled = true
+text = "Reinforce!"
+
+[connection signal="item_selected" from="vBoxContainer/hBoxContainer/vBoxContainer/selectRegion" to="." method="_on_select_region_selected"]
+[connection signal="item_selected" from="vBoxContainer/hBoxContainer/vBoxContainer2/selectBonus" to="." method="_on_select_bonus_selected"]
+[connection signal="pressed" from="vBoxContainer/reinforceButton" to="." method="_on_reinforce_button_pressed"]

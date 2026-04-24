@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cspq2hpxgoefw"]
+
+[ext_resource type="Script" uid="uid://di2tyj1wnywe" path="res://Scenes/TurnChange/turnChange.gd" id="1_w7xwb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k2dag"]
+
+[node name="turnChange" type="Control" unique_id=643937382]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_w7xwb")
+
+[node name="colorRect" type="ColorRect" parent="." unique_id=1632202054]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.14509805)
+
+[node name="panelContainer" type="PanelContainer" parent="colorRect" unique_id=1506624336]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -200.0
+offset_right = 175.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vBoxContainer" type="VBoxContainer" parent="colorRect/panelContainer" unique_id=2010039877]
+layout_mode = 2
+
+[node name="label" type="Label" parent="colorRect/panelContainer/vBoxContainer" unique_id=422486450]
+layout_mode = 2
+text = "Time for the next player's turn!"
+label_settings = SubResource("LabelSettings_k2dag")
+horizontal_alignment = 1
+
+[node name="newPlayer" type="Label" parent="colorRect/panelContainer/vBoxContainer" unique_id=1738334414]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="continue" type="Button" parent="colorRect/panelContainer/vBoxContainer" unique_id=776464024]
+layout_mode = 2
+text = "Continue"
+
+[connection signal="pressed" from="colorRect/panelContainer/vBoxContainer/continue" to="." method="_on_continue_pressed"]

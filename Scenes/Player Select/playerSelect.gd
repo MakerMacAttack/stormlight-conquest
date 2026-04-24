@@ -44,13 +44,14 @@ func setBeginReady() -> void:
 	for i in numberOfPlayers:
 		var current = playerDetails[i]
 		if current.size() == 2:
-			if !(current[0] != "" and current[1] >= 1):
+			if current[0] == "" || current[1] < 1:
 				readyToBegin = false # technically at this point I could simply disable the button and quit.
 			if selectedColorIndices.has(current[1]):
 				readyToBegin = false
 			selectedColorIndices.append(current[1])
 		else:
 			readyToBegin = false
+	selectedColorIndices = []
 	if readyToBegin:
 		begin.disabled = false
 	else: begin.disabled = true
