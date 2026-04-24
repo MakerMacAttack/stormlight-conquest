@@ -1,0 +1,26 @@
+Zoom with mouse scroll-wheel, pan with arrow keys.
+
+All the standard rules of Risk.
+
+On your turn, you attack from one of your regions to an adjacent hostile region. The attacker can commit all of their troops but one to the attack, maxing at 3. The defender will automatically defend with 2, unless they only have one troop.
+
+The highest roll of the attacker will be compared to the highest of the defender. If they each rolled at least two, the second-highest will then be compared.
+
+Ties go to the defender, otherwise, highest of any given matched set of dice wins. For each win, your opponent's troops are reduced by 1.
+
+If the aggressor reduces the defending troops to 0, they have conquered the new region and will now move in troops. At minimum they must move however many dice they rolled in the most recent attack. At most they can advance all but one of the troops in the attacking region.
+
+The winner is whoever is the final player who has not been eliminated.
+
+To be adjacent, two territories must share a border which is not blocked by mountains, rivers, or oceans. Green lines will indicate when two territories are considered adjacent despite mountains or oceans. Brown lines indicate some of the impassible borders.
+
+Red lines are borders which can be attacked across. Blue lines can also be attacked across, and they represent the borders of Kingdoms.
+
+At the end of a player's turn, they are allowed on Redeployment. They can transfer troops from one Territory they control to an adjacent one they control. They can move as many troops as they wish as long as they leave one in the original Territory. Players may skip this step.
+(We plan to make this process more robust in later versions of the game.)
+
+At the start of a player's turn, they will receive fresh troops they can reinforce as they wish. The player who starts the game will always get exactly 3 troops.
+
+The bonus is determined for every subsequent turn. A player will get 1 troop for every four Territories they control, with a minimum of 3. So for controlling 1-15 Territories they will get 3 troops, then starting at 16 they will get 4, and then another for every 3 additional Territories.
+
+There will additionally be a Kingdom bonus. If a player controls every Territory withing a Kingdom, they will additionally get the bonus for that Kingdom. These amounts are displayed at the bottom of the screen.

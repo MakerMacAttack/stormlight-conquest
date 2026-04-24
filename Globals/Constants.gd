@@ -35,7 +35,7 @@ const DEFAULT_COLORS = [
 		"displayName": "Emerald",
 		"accessibilityCode": "e",
 		"base": 0x50C878FF,
-		"stroke": 0xFFFFFFFF
+		"stroke": 0x000000FF
 	},
 	{
 		"displayName": "Garnet",
@@ -46,7 +46,7 @@ const DEFAULT_COLORS = [
 	{
 		"displayName": "Zircon",
 		"accessibilityCode": "z",
-		"base": 0xF4F8FFFF,
+		"base": 0x87CEFAFF,
 		"stroke": 0x000000FF
 	},
 	{
@@ -58,13 +58,13 @@ const DEFAULT_COLORS = [
 	{
 		"displayName": "Topaz",
 		"accessibilityCode": "t",
-		"base": 0xFFC87CFF,
+		"base": 0xA47E1BFF,
 		"stroke": 0xFFFFFFFF
 	},
 	{
 		"displayName": "Heliodor",
 		"accessibilityCode": "h",
-		"base": 0xEBC965FF,
+		"base": 0xF3CF4BFF,
 		"stroke": 0x000000FF
 	}
 ]
